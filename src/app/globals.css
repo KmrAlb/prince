@@ -2,20 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import romantic serif font for headings and modern sans for body */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:wght@400;500;600&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff7f7;          /* Soft pink-white */
+  --foreground: #4a4a4a;          /* Soft charcoal */
+  --accent: #be5a6c;             /* Dusty rose */
+  --accent-hover: #a44958;       /* Darker rose */
+  --secondary-bg: #fdf1f3;       /* Light pink */
+  --muted: #767676;              /* Muted text */
+  --border: #f4d5d9;             /* Soft pink border */
+  --card-bg: #ffffff;            /* Pure white */
+  --shadow: rgba(190, 90, 108, 0.08);
+  --transition-duration: 0.3s;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a1517;        /* Deep burgundy-black */
+    --foreground: #f0e6e8;        /* Soft pink-white */
+    --accent: #d87d8f;           /* Light dusty rose */
+    --accent-hover: #e68ea0;     /* Lighter rose for hover */
+    --secondary-bg: #251d20;     /* Slightly lighter background */
+    --muted: #b8a8ac;            /* Muted pink-gray */
+    --border: #382b2f;           /* Dark rose border */
+    --card-bg: #1f181b;          /* Slightly lighter than background */
+    --shadow: rgba(216, 125, 143, 0.1);
   }
 }
 
+/* Global Styles */
 body {
+  background-color: var(--background);
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lora', serif;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--foreground);
+  line-height: 1.3;
+}
+
+.section-title {
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Form Elements */
+input, textarea, select {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  transition: all var(--transition-duration);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(190, 90, 108, 0.1);
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  transition: all var(--transition-duration);
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  transition: transform var(--transition-duration),
+              box-shadow var(--transition-duration);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
 }
