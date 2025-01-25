@@ -39,14 +39,14 @@ const Footer = () => {
             <h3 className="text-xl font-medium mb-4">Follow Us</h3>
             <div className="flex items-center space-x-6">
               <a
-                href="#"
+                href="https://www.instagram.com/vivaahtales_/"
                 aria-label="Instagram"
                 className="text-gray-400 hover:text-white transition"
               >
                 <Instagram size={28} />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/PrinceGarwar/"
                 aria-label="Facebook"
                 className="text-gray-400 hover:text-white transition"
               >

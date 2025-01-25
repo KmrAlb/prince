@@ -4,27 +4,42 @@ import Image from 'next/image';
 
 const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect if the screen size is mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Mobile threshold at 768px
+    };
+
+    handleResize(); // Check initially
+    window.addEventListener('resize', handleResize); // Add resize listener
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Cleanup listener
+    };
+  }, []);
 
   useEffect(() => {
-    const imagePreload = new window.Image(); // Use window.Image to avoid Next.js Image constructor error
-    imagePreload.src = '/images/hero1.jpg';
+    const imagePreload = new window.Image();
+    imagePreload.src = isMobile ? '/images/hero-mobile.jpg' : '/images/hero1.jpg'; // Preload appropriate image
     imagePreload.onload = () => {
       setImageLoaded(true);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div className="relative h-[90vh] md:h-[90vh] overflow-hidden bg-black">
       <Image
-        src="/images/wedding/1.webp"
+        src={isMobile ? '/images/wedding/0.webp' : '/images/wedding/1.webp'} // Use mobile image for small screens
         alt="Wedding Photography"
-        fill // Replace layout="fill" with fill
+        fill
         priority
         sizes="100vw"
         className={`opacity-80 transition-opacity duration-1000 ease-in-out ${
           imageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
-        style={{ objectFit: 'cover' }} // Use style for objectFit
+        style={{ objectFit: 'cover' }}
       />
       <div className="absolute inset-0 bg-black bg-opacity-40">
         <div className="h-full max-w-7xl mx-auto px-4 flex items-center justify-center">
