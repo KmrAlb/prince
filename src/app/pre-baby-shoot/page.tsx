@@ -1,9 +1,20 @@
+// ./src/app/pre-baby-shoot/page.tsx
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
-const PREBABY_IMAGES = [
+import Image from 'next/image'; // Importing Image from next/image
+
+interface PreBabyImage {
+  src: string;
+  alt: string;
+  caption: string;
+  description: string;
+}
+
+const PREBABY_IMAGES: PreBabyImage[] = [
   {
     src: '/images/prebaby/1 (6).webp',
     alt: 'Pre-Baby Photoshoot 1',
@@ -23,7 +34,7 @@ const PREBABY_IMAGES = [
     alt: 'Pre-Baby Photoshoot 3',
     caption: 'First smiles, unforgettable memories.',
     description:
-      'Documenting the unique charm of your baby’s first year with care and attention.',
+      "Documenting the unique charm of your baby's first year with care and attention.",
   },
   {
     src: '/images/prebaby/1 (1).webp',
@@ -37,7 +48,7 @@ const PREBABY_IMAGES = [
     alt: 'Pre-Baby Photoshoot 5',
     caption: 'Big love for little ones.',
     description:
-      'Creating timeless portraits that celebrate your child’s first year.',
+      "Creating timeless portraits that celebrate your child's first year.",
   },
   {
     src: '/images/prebaby/1 (5).webp',
@@ -76,7 +87,7 @@ const RainDrop = () => (
 );
 
 const PreBabyPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<PreBabyImage | null>(null);
   
   useEffect(() => {
     if (selectedImage) {
@@ -94,13 +105,13 @@ const PreBabyPage = () => {
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
       {/* Hero Section */}
       <motion.div
-                 className="relative h-64 overflow-hidden"
-                 style={{
-                   backgroundImage: "url('/images/prebaby/1 (7).webp')",
-                   backgroundSize: 'cover',
-                   backgroundPosition: 'center',
-                 }}
-               >
+        className="relative h-64 overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/prebaby/1 (7).webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="absolute inset-0 bg-black/30" />
         {/* Sparkles */}
         {Array.from({ length: 20 }).map((_, i) => (
@@ -132,12 +143,11 @@ const PreBabyPage = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-             <Sparkles className="w-5 h-5" />
-
-              <p className="text-lg md:text-xl"> 
-              Capturing the joy of their first year  </p>
               <Sparkles className="w-5 h-5" />
-             
+              <p className="text-lg md:text-xl"> 
+                Capturing the joy of their first year  
+              </p>
+              <Sparkles className="w-5 h-5" />
             </motion.div>
           </div>
         </motion.div>
@@ -163,10 +173,13 @@ const PreBabyPage = () => {
                 className="relative overflow-hidden shadow-xl cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-auto object-cover rounded-none"
+                  layout="responsive" // Use responsive layout for better performance
+                  width={500} // Specify width according to your design
+                  height={300} // Specify height according to your design
+                  className="object-cover rounded-none"
                 />
               </motion.div>
             </div>
@@ -198,10 +211,13 @@ const PreBabyPage = () => {
               className="relative max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="w-full h-auto rounded-none shadow-2xl"
+                layout="responsive" // Use responsive layout for better performance
+                width={500} // Specify width according to your design
+                height={300} // Specify height according to your design
+                className="rounded-none shadow-2xl"
               />
               <motion.div
                 className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/60 to-transparent rounded-b-lg"

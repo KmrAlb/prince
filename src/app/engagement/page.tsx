@@ -1,10 +1,18 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import Image from 'next/image'; // Import the Image component
 
-const ENGAGEMENT_IMAGES = [
+interface EngagementImage {
+  src: string;
+  alt: string;
+  caption: string;
+  description: string;
+}
+
+const ENGAGEMENT_IMAGES: EngagementImage[] = [
   {
     src: '/images/engagement/1 (8).webp',
     alt: 'Engagement 1',
@@ -31,7 +39,7 @@ const ENGAGEMENT_IMAGES = [
     alt: 'Engagement 4',
     caption: 'Surrounded by love.',
     description:
-      'Loved ones gather to share in the happiness of the couple’s engagement.',
+      "Loved ones gather to share in the happiness of the couple's engagement.",
   },
   {
     src: '/images/engagement/1 (6).webp',
@@ -70,12 +78,12 @@ const RainDrop = () => (
 );
 
 const EngagementPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<EngagementImage | null>(null);
   
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
       {/* Hero Section */}
-<motion.div
+      <motion.div
         className="relative h-64 overflow-hidden"
         style={{
           backgroundImage: "url('/images/prewedding/1 (6).webp')",
@@ -112,7 +120,8 @@ const EngagementPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-            > <Sparkles className="w-5 h-5" />
+            > 
+              <Sparkles className="w-5 h-5" />
               <p className="text-lg md:text-xl">Honoring love and commitment</p>
               <Sparkles className="w-5 h-5" />
             </motion.div>
@@ -138,10 +147,14 @@ const EngagementPage = () => {
                 className="relative overflow-hidden shadow-xl cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                {/* Replace img with Image */}
+                <Image
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-auto object-cover rounded-none"
+                  layout="responsive" // Use responsive layout for better performance
+                  width={800} // Specify width for optimization
+                  height={600} // Specify height for optimization
+                  className="rounded-none"
                 />
               </motion.div>
             </div>
@@ -173,10 +186,14 @@ const EngagementPage = () => {
               className="relative max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              {/* Replace img with Image in modal as well */}
+              <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="w-full h-auto rounded-none shadow-2xl"
+                layout="responsive" // Use responsive layout for better performance
+                width={800} // Specify width for optimization
+                height={600} // Specify height for optimization
+                className="rounded-none shadow-2xl"
               />
               <motion.div
                 className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/60 to-transparent rounded-b-lg"
@@ -200,7 +217,7 @@ const EngagementPage = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth="2"
+                    strokeWidth={2}
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
@@ -212,7 +229,7 @@ const EngagementPage = () => {
 
       {/* Footer */}
     </div>
-);
+  );
 };
 
 export default EngagementPage;

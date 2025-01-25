@@ -1,7 +1,10 @@
-import Hero from '@/components/Hero';
-import ImageGrid from '@/components/Imagegrid';1
+// ./src/app/page.tsx
 
-export default function Home() {
+import React from 'react';
+import Hero from '@/components/Hero';
+import ImageGrid from '@/components/Imagegrid'; // Ensure the component name matches the file name (case-sensitive)
+
+const Home: React.FC = () => {
   return (
     <>
       <Hero />
@@ -10,4 +13,6 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
+
+export default Home;

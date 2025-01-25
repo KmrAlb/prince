@@ -1,27 +1,30 @@
 'use client';
-
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    const image = new Image();
-    image.src = '/images/hero1.jpgq'; // Preload the image
-
-    image.onload = () => {
+    const imagePreload = new window.Image(); // Use window.Image to avoid Next.js Image constructor error
+    imagePreload.src = '/images/hero1.jpg';
+    imagePreload.onload = () => {
       setImageLoaded(true);
     };
   }, []);
 
   return (
     <div className="relative h-[90vh] md:h-[90vh] overflow-hidden bg-black">
-      <img
+      <Image
         src="/images/wedding/1.webp"
         alt="Wedding Photography"
-        className={`w-full h-full object-cover opacity-80 transition-opacity duration-1000 ease-in-out ${
+        fill // Replace layout="fill" with fill
+        priority
+        sizes="100vw"
+        className={`opacity-80 transition-opacity duration-1000 ease-in-out ${
           imageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
+        style={{ objectFit: 'cover' }} // Use style for objectFit
       />
       <div className="absolute inset-0 bg-black bg-opacity-40">
         <div className="h-full max-w-7xl mx-auto px-4 flex items-center justify-center">

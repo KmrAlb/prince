@@ -1,67 +1,43 @@
+// ./src/app/wedding/page.tsx
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import Image from 'next/image'; // Importing Image from next/image
 
-const WEDDING_IMAGES =[
+interface WeddingImage {
+  src: string;
+  alt: string;
+  caption: string;
+  description: string;
+}
+
+const WEDDING_IMAGES: WeddingImage[] = [
   {
-    src: '/images/prewedding/1 (3).webp',
-    alt: 'Haldi Ceremony',
-    caption: 'A Golden Glow',
-    description: 'The ritual of applying turmeric to the bride and groom, signifying purity and blessings.',
+    src: '/images/wedding/1.webp',
+    alt: 'Wedding Photo 1',
+    caption: 'A beautiful beginning together.',
+    description:
+      'Capturing the essence of love and commitment on your special day.',
   },
   {
-    src: '/images/wedding/9 (1).webp',
-    alt: 'Mehndi Ceremony',
-    caption: 'Patterns of Love',
-    description: 'Beautiful henna designs adorn the bride, symbolizing joy and celebration.',
+    src: '/images/wedding/2.webp',
+    alt: 'Wedding Photo 2',
+    caption: 'Moments to cherish forever.',
+    description:
+      'Every glance and smile tells a story of love and joy shared.',
   },
   {
-    src: '/images/wedding/9 (2).webp',
-    alt: 'Sangeet Night',
-    caption: 'Melodies and Dance',
-    description: 'An evening of music and dance to celebrate the upcoming union.',
+    src: '/images/wedding/3.webp',
+    alt: 'Wedding Photo 3',
+    caption: 'Celebrating love and unity.',
+    description:
+      'Immortalizing the beautiful moments that define your journey together.',
   },
-  {
-    src: '/images/wedding/7 (2).webp',
-    alt: 'Wedding Vows',
-    caption: 'Promises of Forever',
-    description: 'A sacred ceremony where vows are exchanged, binding two souls as one.',
-  },
-  {
-    src: '/images/wedding/9.webp',
-    alt: 'Baraat Procession',
-    caption: 'A Royal Entry',
-    description: 'The grand entrance, filled with music, dance, and excitement.',
-  },
-  {
-    src: '/images/wedding/1 (10).webp',
-    alt: 'Jaimala Ceremony',
-    caption: 'A Garland of Love',
-    description: 'The exchange of garlands, symbolizing acceptance and mutual respect.',
-  },
-  {
-    src: '/images/wedding/1 (5).webp',
-    alt: 'Mandap Rituals',
-    caption: 'Sacred Traditions',
-    description: 'Traditional rituals performed under the mandap to invoke blessings from the divine.',
-  },
-  {
-    src: '/images/wedding/1 (9).webp',
-    alt: 'Sindoor Ceremony',
-    caption: 'A Mark of Commitment',
-    description: 'The groom applies sindoor on the bride’s forehead, marking the start of their marital journey.',
-  },
-  
-  {
-    src: '/images/wedding/7 (1).webp',
-    alt: 'Reception Night',
-    caption: 'A Grand Celebration',
-    description: 'A night to celebrate the union with family and friends through dance, laughter, and love.',
-  },
+  // Add more images as needed
 ];
-
 
 const Sparkle = () => (
   <motion.div
@@ -91,14 +67,15 @@ const RainDrop = () => (
 );
 
 const WeddingPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-
+  const [selectedImage, setSelectedImage] = useState<WeddingImage | null>(null);
+  
   useEffect(() => {
     if (selectedImage) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
+    
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -110,13 +87,12 @@ const WeddingPage = () => {
       <motion.div
         className="relative h-64 overflow-hidden"
         style={{
-          backgroundImage: "url('/images/wedding/1 (2).webp')",
+          backgroundImage: "url('/images/wedding/hero.webp')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        {/* Dimmer Overlay */}
-        <div className="absolute inset-0 bg-black opacity-40" />
+        <div className="absolute inset-0 bg-black/30" />
         {/* Sparkles */}
         {Array.from({ length: 20 }).map((_, i) => (
           <Sparkle key={`sparkle-${i}`} />
@@ -132,13 +108,7 @@ const WeddingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div
-            className="text-center"
-            style={{
-              color: '#FFFFFF',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
-            }}
-          >
+          <div className="text-center text-white space-y-4 px-4">
             <motion.h1
               className="text-4xl md:text-5xl font-bold"
               initial={{ opacity: 0, y: 20 }}
@@ -147,15 +117,16 @@ const WeddingPage = () => {
             >
               Wedding Moments
             </motion.h1>
-            <motion.p
-              className="text-lg md:text-xl"
+            <motion.div
+              className="flex items-center justify-center space-x-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-            > 
-            <p className="text-lg md:text-xl">
-              Celebrating love, joy, and togetherness </p>
-            </motion.p>
+            >
+              <Sparkles className="w-5 h-5" />
+              <p className="text-lg md:text-xl">Capturing the joy of your special day</p>
+              <Sparkles className="w-5 h-5" />
+            </motion.div>
           </div>
         </motion.div>
       </motion.div>
@@ -169,9 +140,7 @@ const WeddingPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className={`flex flex-col md:flex-row ${
-              index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-            } items-center gap-8 mb-24 relative`}
+            className={`flex flex-col md:flex-row ${index % 2 === 0 ? '' : 'md:flex-row-reverse'} items-center gap-8 mb-24 relative`}
           >
             <div className="w-full md:w-1/2 relative group">
               <motion.div
@@ -180,10 +149,13 @@ const WeddingPage = () => {
                 className="relative overflow-hidden shadow-xl cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-auto object-cover rounded-none"
+                  layout="responsive" // Use responsive layout for better performance
+                  width={500} // Specify width according to your design
+                  height={300} // Specify height according to your design
+                  className="object-cover rounded-none"
                 />
               </motion.div>
             </div>
@@ -215,10 +187,13 @@ const WeddingPage = () => {
               className="relative max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="w-full h-auto rounded-none shadow-2xl"
+                layout="responsive" // Use responsive layout for better performance
+                width={500} // Specify width according to your design
+                height={300} // Specify height according to your design
+                className="rounded-none shadow-2xl"
               />
               <motion.div
                 className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/60 to-transparent rounded-b-lg"
@@ -251,11 +226,10 @@ const WeddingPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Footer */}
     </div>
-  );
+);
 };
 
 export default WeddingPage;
-
-/* CSS */
-/* Add this in your CSS file or Tailwind configuration */

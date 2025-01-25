@@ -1,10 +1,20 @@
+// ./src/app/pre-wedding/page.tsx
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import Image from 'next/image'; // Importing Image from next/image
 
-const PREWEDDING_IMAGES = [
+interface PreWeddingImage {
+  src: string;
+  alt: string;
+  caption: string;
+  description: string;
+}
+
+const PREWEDDING_IMAGES: PreWeddingImage[] = [
   {
     src: '/images/prewedding/1 (7).webp',
     alt: 'Pre-Wedding Photo 1',
@@ -70,7 +80,7 @@ const RainDrop = () => (
 );
 
 const PreWeddingPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<PreWeddingImage | null>(null);
   
   useEffect(() => {
     if (selectedImage) {
@@ -86,25 +96,24 @@ const PreWeddingPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-         {/* Hero Section */}
-         <motion.div
-           className="relative h-64 overflow-hidden"
-           style={{
-             backgroundImage: "url('/images/prewedding/1 (1).webp')",
-             backgroundSize: 'cover',
-             backgroundPosition: 'center',
-           }}
-         >
-           {/* Dimmer Overlay */}
-           <div className="absolute inset-0 bg-black opacity-40" />
-           {/* Sparkles */}
-           {Array.from({ length: 20 }).map((_, i) => (
-             <Sparkle key={`sparkle-${i}`} />
-           ))}
-           {/* Rain */}
-           {Array.from({ length: 30 }).map((_, i) => (
-             <RainDrop key={`rain-${i}`} />
-           ))}
+      {/* Hero Section */}
+      <motion.div
+        className="relative h-64 overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/prewedding/1 (1).webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-40" />
+        {/* Sparkles */}
+        {Array.from({ length: 20 }).map((_, i) => (
+          <Sparkle key={`sparkle-${i}`} />
+        ))}
+        {/* Rain */}
+        {Array.from({ length: 30 }).map((_, i) => (
+          <RainDrop key={`rain-${i}`} />
+        ))}
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
           initial={{ opacity: 0, y: 20 }}
@@ -125,7 +134,8 @@ const PreWeddingPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-            > <Sparkles className="w-5 h-5" />
+            >
+              <Sparkles className="w-5 h-5" />
               <p className="text-lg md:text-xl">Crafting timeless love stories</p>
               <Sparkles className="w-5 h-5" />
             </motion.div>
@@ -151,10 +161,13 @@ const PreWeddingPage = () => {
                 className="relative overflow-hidden shadow-xl cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-auto object-cover rounded-none"
+                  layout="responsive" // Use responsive layout for better performance
+                  width={500} // Specify width according to your design
+                  height={300} // Specify height according to your design
+                  className="object-cover rounded-none"
                 />
               </motion.div>
             </div>
@@ -186,10 +199,13 @@ const PreWeddingPage = () => {
               className="relative max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="w-full h-auto rounded-none shadow-2xl"
+                layout="responsive" // Use responsive layout for better performance
+                width={500} // Specify width according to your design
+                height={300} // Specify height according to your design
+                className="rounded-none shadow-2xl"
               />
               <motion.div
                 className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/60 to-transparent rounded-b-lg"

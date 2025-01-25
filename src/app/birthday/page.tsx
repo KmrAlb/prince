@@ -1,10 +1,20 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import Image from 'next/image'; // Import the Image component
 
-const BIRTHDAY_IMAGES = [
+// Define the structure of image data
+interface ImageData {
+  src: string;
+  alt: string;
+  caption: string;
+  description: string;
+}
+
+// Sample birthday images
+const BIRTHDAY_IMAGES: ImageData[] = [
   {
     src: '/images/birthday/1 (3).webp',
     alt: 'Birthday Party 1',
@@ -42,6 +52,7 @@ const BIRTHDAY_IMAGES = [
   },
 ];
 
+// Sparkle animation component
 const Sparkle = () => (
   <motion.div
     className="absolute w-1 h-1 bg-white rounded-full opacity-70 animate-sparkle"
@@ -52,6 +63,7 @@ const Sparkle = () => (
   />
 );
 
+// Raindrop animation component
 const RainDrop = () => (
   <motion.div
     className="absolute w-1 h-6 bg-white rounded-full opacity-50"
@@ -69,29 +81,25 @@ const RainDrop = () => (
   />
 );
 
+// BirthdayPage component
 const BirthdayPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
       {/* Hero Section */}
-       <motion.div
-                 className="relative h-64 overflow-hidden"
-                 style={{
-                   backgroundImage: "url('/images/birthday/1 (4).webp')",
-                   backgroundSize: 'cover',
-                   backgroundPosition: 'center',
-                 }}
+      <motion.div
+        className="relative h-64 overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/birthday/1 (4).webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
       >
-        {/* Dimmer Overlay */}
         <div className="absolute inset-0 bg-black opacity-40" />
-           {/* Sparkles */}
-        <div className="absolute inset-0 bg-black/30" />
-        {/* Sparkles */}
         {Array.from({ length: 20 }).map((_, i) => (
           <Sparkle key={`sparkle-${i}`} />
         ))}
-        {/* Rain */}
         {Array.from({ length: 30 }).map((_, i) => (
           <RainDrop key={`rain-${i}`} />
         ))}
@@ -115,7 +123,8 @@ const BirthdayPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-            > <Sparkles className="w-5 h-5" />
+            > 
+              <Sparkles className="w-5 h-5" />
               <p className="text-lg md:text-xl">A day full of love, laughter, and memories</p>
               <Sparkles className="w-5 h-5" />
             </motion.div>
@@ -130,7 +139,7 @@ const BirthdayPage = () => {
             key={index}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
             className={`flex flex-col md:flex-row ${
               index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
@@ -143,10 +152,14 @@ const BirthdayPage = () => {
                 className="relative overflow-hidden shadow-xl cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                {/* Replace img with Image */}
+                <Image
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-auto object-cover rounded-none"
+                  layout="responsive" // Use responsive layout for better performance
+                  width={800} // Specify width for optimization
+                  height={600} // Specify height for optimization
+                  className="rounded-none"
                 />
               </motion.div>
             </div>
@@ -178,10 +191,14 @@ const BirthdayPage = () => {
               className="relative max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              {/* Replace img with Image in modal as well */}
+              <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="w-full h-auto rounded-none shadow-2xl"
+                layout="responsive" // Use responsive layout for better performance
+                width={800} // Specify width for optimization
+                height={600} // Specify height for optimization
+                className="rounded-none shadow-2xl"
               />
               <motion.div
                 className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/60 to-transparent rounded-b-lg"
@@ -194,7 +211,7 @@ const BirthdayPage = () => {
               </motion.div>
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 text-white hover:text-pink-400 transition-colors"
+                className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
               >
                 <svg
                   className="w-6 h-6"
@@ -214,10 +231,8 @@ const BirthdayPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Footer */}
     </div>
-);
+  );
 };
 
 export default BirthdayPage;

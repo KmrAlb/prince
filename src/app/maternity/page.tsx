@@ -3,8 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import Image from 'next/image'; // Import the Image component
 
-const MATERNITY_IMAGES = [
+interface MaternityImage {
+  src: string;
+  alt: string;
+  caption: string;
+  description: string;
+}
+
+const MATERNITY_IMAGES: MaternityImage[] = [
   {
     src: '/images/maternity/1 (2).webp',
     alt: 'Maternity Photo 1',
@@ -71,7 +79,7 @@ const RainDrop = () => (
 );
 
 const MaternityPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<MaternityImage | null>(null);
 
   useEffect(() => {
     if (selectedImage) {
@@ -89,13 +97,13 @@ const MaternityPage = () => {
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
       {/* Hero Section */}
       <motion.div
-                 className="relative h-64 overflow-hidden"
-                 style={{
-                   backgroundImage: "url('/images/maternity/1 (1).webp')",
-                   backgroundSize: 'cover',
-                   backgroundPosition: 'center',
-                 }}
-               >
+        className="relative h-64 overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/maternity/1 (1).webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="absolute inset-0 bg-black/30" />
         {/* Sparkles */}
         {Array.from({ length: 20 }).map((_, i) => (
@@ -155,10 +163,14 @@ const MaternityPage = () => {
                 className="relative overflow-hidden shadow-xl cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                {/* Replace img with Image */}
+                <Image
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-auto object-cover rounded-none"
+                  layout="responsive" // Use responsive layout for better performance
+                  width={800} // Specify width for optimization
+                  height={600} // Specify height for optimization
+                  className="rounded-none"
                 />
               </motion.div>
             </div>
@@ -184,17 +196,21 @@ const MaternityPage = () => {
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
           >
-            <motion.div
+            <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               className="relative max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              {/* Replace img with Image in modal as well */}
+              <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="w-full h-auto rounded-none shadow-2xl"
+                layout="responsive" // Use responsive layout for better performance
+                width={800} // Specify width for optimization
+                height={600} // Specify height for optimization
+                className="rounded-none shadow-2xl"
               />
               <motion.div 
                 className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/60 to-transparent rounded-b-lg"
@@ -218,7 +234,7 @@ const MaternityPage = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth="2"
+                    strokeWidth={2}
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>

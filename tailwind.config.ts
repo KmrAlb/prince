@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -7,7 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: 'class', // Enable class-based dark mode
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -18,8 +17,8 @@ const config: Config = {
       },
       keyframes: {
         slideUp: {
-          '0%': { opacity: 0, transform: 'translateY(30px)' },
-          '100%': { opacity: 1, transform: 'translateY(0)' },
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
       colors: {
@@ -33,7 +32,5 @@ const config: Config = {
   },
   plugins: [],
 };
-
-
 
 export default config;
