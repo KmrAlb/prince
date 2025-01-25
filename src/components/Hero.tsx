@@ -17,7 +17,7 @@ const Hero = () => {
   return (
     <div className="relative h-[90vh] md:h-[90vh] overflow-hidden bg-black">
       <img
-        src="/images/hero1.jpg"
+        src="/images/wedding/1.webp"
         alt="Wedding Photography"
         className={`w-full h-full object-cover opacity-80 transition-opacity duration-1000 ease-in-out ${
           imageLoaded ? 'opacity-100' : 'opacity-0'

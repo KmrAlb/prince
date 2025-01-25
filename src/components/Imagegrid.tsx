@@ -1,36 +1,16 @@
-import ImageCard from './Imagecard';
+'use client';
+
+import React from 'react';
+import Link from 'next/link'; // Import Link for navigation
+import ImageCard from './ImageCard'; // Importing ImageCard component
 
 const latestWorksData = [
-  {
-    src: '/images/hero.jpg',
-    alt: 'Wedding Couple Portrait',
-    category: 'Wedding Couple Portrait',
-  },
-  {
-    src: '/images/pre-wedding.jpg',
-    alt: 'Pre-Wedding Shoot',
-    category: 'Pre-Wedding Shoot',
-  },
-  {
-    src: '/images/engagement.jpg',
-    alt: 'Engagement Session',
-    category: 'Engagement Session',
-  },
-  {
-    src: '/images/reception.jpg',
-    alt: 'Reception Highlights',
-    category: 'Reception Highlights',
-  },
-  {
-    src: '/images/ceremony.jpg',
-    alt: 'Ceremony Moments',
-    category: 'Ceremony Moments',
-  },
-  {
-    src: '/images/family.jpg',
-    alt: 'Family Portraits',
-    category: 'Family Portraits',
-  },
+  { name: 'Maternity', href: '/maternity' },
+  { name: 'Pre-Baby Shoot', href: '/pre-baby-shoot' },
+  { name: 'Engagement', href: '/engagement' },
+  { name: 'Pre-Wedding', href: '/pre-wedding' },
+  { name: 'Wedding', href: '/wedding' },
+  { name: 'Birthday', href: '/birthday' },
 ];
 
 const LatestWorks = () => {
@@ -42,12 +22,13 @@ const LatestWorks = () => {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {latestWorksData.map((work, index) => (
-            <ImageCard
-              key={index}
-              src={work.src}
-              alt={work.alt}
-              category={work.category}
-            />
+            <Link key={index} href={work.href}>
+              <ImageCard
+                src={`/images/grid/${work.name.toLowerCase().replace(' ', '-')}.webp`} // Assuming images are named accordingly
+                alt={work.name}
+                category={work.name}
+              />
+            </Link>
           ))}
         </div>
       </div>

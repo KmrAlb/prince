@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { Mail, Phone, Instagram, Facebook } from 'lucide-react';
+import { Mail, Phone, Instagram, Facebook, Youtube } from 'lucide-react'; // Import Youtube icon
 
 const Footer = () => {
   return (
@@ -23,14 +22,14 @@ const Footer = () => {
                 className="flex items-center space-x-3 text-gray-400 hover:text-white transition"
               >
                 <Phone size={20} />
-                <span>+1 234 567 890</span>
+                <span>+91 98516 78337</span>
               </a>
               <a
                 href="mailto:info@clickingshaadi.com"
                 className="flex items-center space-x-3 text-gray-400 hover:text-white transition"
               >
                 <Mail size={20} />
-                <span>info@clickingshaadi.com</span>
+                <span>enquiriesvivaahtales@gmail.com</span>
               </a>
             </div>
           </div>
@@ -52,6 +51,13 @@ const Footer = () => {
                 className="text-gray-400 hover:text-white transition"
               >
                 <Facebook size={28} />
+              </a>
+              <a
+                href="https://youtu.be/JDT0WqnGRlY?si=R6Pg_70jVV3g-boB"
+                aria-label="YouTube" // Add aria-label for accessibility
+                className="text-gray-400 hover:text-white transition"
+              >
+                <Youtube size={28} /> {/* Add YouTube icon here */}
               </a>
             </div>
           </div>

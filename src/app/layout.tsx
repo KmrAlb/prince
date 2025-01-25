@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'ClickingShaadi - Wedding Photography',
+  title: 'Vivah Tales',
   description: 'Professional wedding photography and cinematography services',
 };
 
