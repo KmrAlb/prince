@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link'; // Import Link for navigation
-import ImageCard from './ImageCard'; // Importing ImageCard component
 
 const latestWorksData = [
   { name: 'Maternity', href: '/maternity' },
