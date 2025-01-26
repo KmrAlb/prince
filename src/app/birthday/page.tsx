@@ -175,23 +175,25 @@ const BirthdayPage = () => {
       </div>
 
       {/* Modal */}
+      {/* Modal */}
+      
       <AnimatePresence>
         {selectedImage && (
           <motion.div
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity :0 }}
+            animate={{ opacity :1}}
+            exit={{opacity :0}}
             onClick={() => setSelectedImage(null)}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              initial={{opacity :0 , scale :0.9}}
+              animate={{opacity :1 , scale :1}}
+              exit={{opacity :0 , scale :0.9}}
               className="relative max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Replace img with Image in modal as well */}
+              {/* Replace img with Image in modal */}
               <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
@@ -200,15 +202,6 @@ const BirthdayPage = () => {
                 height={600} // Specify height for optimization
                 className="rounded-none shadow-2xl"
               />
-              <motion.div
-                className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/60 to-transparent rounded-b-lg"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                <h3 className="text-2xl font-semibold text-white mb-2">{selectedImage.caption}</h3>
-                <p className="text-white/90">{selectedImage.description}</p>
-              </motion.div>
               <button
                 onClick={() => setSelectedImage(null)}
                 className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
@@ -222,7 +215,7 @@ const BirthdayPage = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
+                    strokeWidth="2"
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>

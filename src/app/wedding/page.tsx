@@ -1,11 +1,8 @@
-// ./src/app/wedding/page.tsx
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
-import Image from 'next/image'; // Importing Image from next/image
 
 interface WeddingImage {
   src: string;
@@ -16,27 +13,59 @@ interface WeddingImage {
 
 const WEDDING_IMAGES: WeddingImage[] = [
   {
-    src: '/images/wedding/1.webp',
-    alt: 'Wedding Photo 1',
-    caption: 'A beautiful beginning together.',
-    description:
-      'Capturing the essence of love and commitment on your special day.',
+    src: '/images/prewedding/1 (3).webp',
+    alt: 'Haldi Ceremony',
+    caption: 'A Golden Glow',
+    description: 'The ritual of applying turmeric to the bride and groom, signifying purity and blessings.',
   },
   {
-    src: '/images/wedding/2.webp',
-    alt: 'Wedding Photo 2',
-    caption: 'Moments to cherish forever.',
-    description:
-      'Every glance and smile tells a story of love and joy shared.',
+    src: '/images/wedding/9 (1).webp',
+    alt: 'Mehndi Ceremony',
+    caption: 'Patterns of Love',
+    description: 'Beautiful henna designs adorn the bride, symbolizing joy and celebration.',
   },
   {
-    src: '/images/wedding/3.webp',
-    alt: 'Wedding Photo 3',
-    caption: 'Celebrating love and unity.',
-    description:
-      'Immortalizing the beautiful moments that define your journey together.',
+    src: '/images/wedding/9 (2).webp',
+    alt: 'Sangeet Night',
+    caption: 'Melodies and Dance',
+    description: 'An evening of music and dance to celebrate the upcoming union.',
   },
-  // Add more images as needed
+  {
+    src: '/images/wedding/7 (2).webp',
+    alt: 'Wedding Vows',
+    caption: 'Promises of Forever',
+    description: 'A sacred ceremony where vows are exchanged, binding two souls as one.',
+  },
+  {
+    src: '/images/wedding/9.webp',
+    alt: 'Baraat Procession',
+    caption: 'A Royal Entry',
+    description: 'The grand entrance, filled with music, dance, and excitement.',
+  },
+  {
+    src: '/images/wedding/1 (10).webp',
+    alt: 'Jaimala Ceremony',
+    caption: 'A Garland of Love',
+    description: 'The exchange of garlands, symbolizing acceptance and mutual respect.',
+  },
+  {
+    src: '/images/wedding/1 (5).webp',
+    alt: 'Mandap Rituals',
+    caption: 'Sacred Traditions',
+    description: 'Traditional rituals performed under the mandap to invoke blessings from the divine.',
+  },
+  {
+    src: '/images/wedding/1 (9).webp',
+    alt: 'Sindoor Ceremony',
+    caption: 'A Mark of Commitment',
+    description: "The groom applies sindoor on the bride's forehead, marking the start of their marital journey.",
+  },
+  {
+    src: '/images/wedding/7 (1).webp',
+    alt: 'Reception Night',
+    caption: 'A Grand Celebration',
+    description: 'A night to celebrate the union with family and friends through dance, laughter, and love.',
+  },
 ];
 
 const Sparkle = () => (
@@ -68,14 +97,9 @@ const RainDrop = () => (
 
 const WeddingPage = () => {
   const [selectedImage, setSelectedImage] = useState<WeddingImage | null>(null);
-  
+
   useEffect(() => {
-    if (selectedImage) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    
+    document.body.style.overflow = selectedImage ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -87,28 +111,31 @@ const WeddingPage = () => {
       <motion.div
         className="relative h-64 overflow-hidden"
         style={{
-          backgroundImage: "url('/images/wedding/hero.webp')",
+          backgroundImage: "url('/images/wedding/1 (2).webp')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-black/30" />
-        {/* Sparkles */}
+        <div className="absolute inset-0 bg-black opacity-40" />
         {Array.from({ length: 20 }).map((_, i) => (
           <Sparkle key={`sparkle-${i}`} />
         ))}
-        {/* Rain */}
         {Array.from({ length: 30 }).map((_, i) => (
           <RainDrop key={`rain-${i}`} />
         ))}
-
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="text-center text-white space-y-4 px-4">
+          <div
+            className="text-center"
+            style={{
+              color: '#FFFFFF',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
+            }}
+          >
             <motion.h1
               className="text-4xl md:text-5xl font-bold"
               initial={{ opacity: 0, y: 20 }}
@@ -117,16 +144,14 @@ const WeddingPage = () => {
             >
               Wedding Moments
             </motion.h1>
-            <motion.div
-              className="flex items-center justify-center space-x-2"
+            <motion.p
+              className="text-lg md:text-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <Sparkles className="w-5 h-5" />
-              <p className="text-lg md:text-xl">Capturing the joy of your special day</p>
-              <Sparkles className="w-5 h-5" />
-            </motion.div>
+              Celebrating love, joy, and togetherness
+            </motion.p>
           </div>
         </motion.div>
       </motion.div>
@@ -138,9 +163,11 @@ const WeddingPage = () => {
             key={index}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
-            className={`flex flex-col md:flex-row ${index % 2 === 0 ? '' : 'md:flex-row-reverse'} items-center gap-8 mb-24 relative`}
+            className={`flex flex-col md:flex-row ${
+              index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+            } items-center gap-8 mb-24 relative`}
           >
             <div className="w-full md:w-1/2 relative group">
               <motion.div
@@ -152,10 +179,9 @@ const WeddingPage = () => {
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  layout="responsive" // Use responsive layout for better performance
-                  width={500} // Specify width according to your design
-                  height={300} // Specify height according to your design
-                  className="object-cover rounded-none"
+                  width={800}
+                  height={600}
+                  className="rounded-none object-cover"
                 />
               </motion.div>
             </div>
@@ -190,20 +216,10 @@ const WeddingPage = () => {
               <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                layout="responsive" // Use responsive layout for better performance
-                width={500} // Specify width according to your design
-                height={300} // Specify height according to your design
+                width={800}
+                height={600}
                 className="rounded-none shadow-2xl"
               />
-              <motion.div
-                className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/60 to-transparent rounded-b-lg"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                <h3 className="text-2xl font-semibold text-white mb-2">{selectedImage.caption}</h3>
-                <p className="text-white/90">{selectedImage.description}</p>
-              </motion.div>
               <button
                 onClick={() => setSelectedImage(null)}
                 className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
@@ -226,10 +242,8 @@ const WeddingPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Footer */}
     </div>
-);
+  );
 };
 
 export default WeddingPage;
