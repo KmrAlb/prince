@@ -53,7 +53,7 @@ const Footer = () => {
                 <Facebook size={28} />
               </a>
               <a
-                href="https://youtu.be/JDT0WqnGRlY?si=R6Pg_70jVV3g-boB"
+                href="https://www.youtube.com/@Vivaahtales/featured"
                 aria-label="YouTube" // Add aria-label for accessibility
                 className="text-gray-400 hover:text-white transition"
               >
