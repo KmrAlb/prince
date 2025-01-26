@@ -9,7 +9,7 @@ const Footer = () => {
           <div>
             <h3 className="text-2xl font-semibold tracking-wide mb-4">VivahTales</h3>
             <p className="text-gray-400 leading-relaxed">
-              Capturing your timeless moments with creativity and passion.
+            Preserving your most cherished moments with unmatched creativity and heartfelt passion, crafting timeless memories that last a lifetime
             </p>
           </div>
 

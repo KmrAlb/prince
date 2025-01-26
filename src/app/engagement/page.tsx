@@ -48,6 +48,7 @@ const ENGAGEMENT_IMAGES: EngagementImage[] = [
     description:
       'An evening filled with laughter, joy, and the promise of a beautiful future together.',
   },
+  
 ];
 
 const Sparkle = () => (
