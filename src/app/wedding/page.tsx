@@ -13,143 +13,138 @@ interface WeddingImage {
 
 }
 const WEDDING_IMAGES: WeddingImage[] = [
+
   {
     src: '/images/wedding/9.webp',
     alt: 'Haldi Ceremony',
     caption: 'A Golden Glow',
-    description: 'The ritual of applying turmeric to the bride and groom, signifying purity and blessings.',
+    description: 'A joyful moment as laughter fills the air and love surrounds the couple.',
   },
   {
     src: '/images/prewedding/1 (3).webp',
     alt: 'Mehndi Ceremony',
     caption: 'Patterns of Love',
-    description: 'Beautiful henna designs adorn the bride, symbolizing joy and celebration.',
+    description: 'Henna on hands, smiles on faces, and hearts full of excitement.',
   },
   {
     src: '/images/wedding/9 (2).webp',
     alt: 'Sangeet Night',
     caption: 'Melodies and Dance',
-    description: 'An evening of music and dance to celebrate the upcoming union.',
+    description: 'Music, laughter, and dance make the night unforgettable.',
   },
   {
     src: '/images/wedding/592.webp',
     alt: 'Wedding Vows',
     caption: 'Promises of Forever',
-    description: 'A sacred ceremony where vows are exchanged, binding two souls as one.',
+    description: 'Two souls sharing a quiet, heartfelt moment of commitment.',
   },
   {
     src: '/images/wedding/982.webp',
     alt: 'Baraat Procession',
-    caption: 'A Royal Entry',
-    description: 'The grand entrance, filled with music, dance, and excitement.',
-        orientation: 'vertical',
-
+    caption: 'A Grand Arrival',
+    description: 'Excitement and celebration fill the air as the couple makes their entrance.',
+    orientation: 'vertical',
   },
   {
     src: '/images/wedding/892a.webp',
     alt: 'Jaimala Ceremony',
     caption: 'A Garland of Love',
-    description: 'The exchange of garlands, symbolizing acceptance and mutual respect.',
+    description: 'Exchanging garlands, smiles, and playful glances.',
   },
   {
     src: '/images/wedding/631a.webp',
     alt: 'Mandap Rituals',
     caption: 'Sacred Traditions',
-    description: 'Traditional rituals performed under the mandap to invoke blessings from the divine.',
+    description: 'Quiet moments of reflection, laughter, and shared happiness.',
   },
- 
   {
     src: '/images/wedding/656.webp',
     alt: 'Bridal Portrait',
     caption: 'Elegance in Frame',
-    description: 'A serene portrait capturing the bride’s grace and beauty before the celebrations begin.',
+    description: 'Capturing her calm, graceful, and radiant presence.',
   },
   {
     src: '/images/wedding/091.webp',
     alt: 'Joyful Celebration',
     caption: 'Moments of Happiness',
-    description: 'Candid smiles shared between family members during the festivities.',
+    description: 'Genuine smiles and laughter shared among loved ones.',
   },
   {
     src: '/images/wedding/102.webp',
     alt: 'Couple Shoot',
     caption: 'Together Forever',
-    description: 'A romantic moment capturing the couple’s bond before the ceremony.',
-        orientation: 'vertical',
-
+    description: 'A quiet, intimate moment of connection between the couple.',
+    orientation: 'vertical',
   },
   {
     src: '/images/wedding/103.webp',
     alt: 'Bridal Jewellery',
     caption: 'Adorned in Tradition',
-    description: 'Intricate jewelry pieces that reflect culture, beauty, and elegance.',
-     orientation: 'vertical',
-
+    description: 'Beautiful details adding charm to a special day.',
+    orientation: 'vertical',
   },
   {
     src: '/images/wedding/1.webp',
     alt: 'Groom Portrait',
     caption: 'Royal Charm',
-    description: 'A poised portrait of the groom dressed in traditional attire.',
+    description: 'A confident, joyful look capturing the groom’s personality.',
   },
   {
     src: '/images/wedding/7 (1).webp',
     alt: 'Family Rituals',
-    caption: 'Blessings and Traditions',
-    description: 'A heartfelt ritual performed with the family surrounding the couple.',
+    caption: 'Blessings and Togetherness',
+    description: 'Heartwarming moments shared with family and friends.',
   },
-  
   {
     src: '/images/wedding/7 (2).webp',
     alt: 'Bridal Mehndi Close-up',
     caption: 'Art in Detail',
-    description: 'A close look at the intricate henna designs symbolizing love and joy.',
+    description: 'A close-up of intricate patterns full of care and love.',
   },
   {
     src: '/images/wedding/1 (10).webp',
     alt: 'Couple Entrance',
     caption: 'A Magical Arrival',
-    description: 'The grand moment as the couple walks into the venue, welcomed by cheers.',
+    description: 'Cheerful smiles and excited glances as the couple arrives.',
   },
   {
     src: '/images/wedding/1 (11).webp',
     alt: 'Cultural Rituals',
-    caption: 'Timeless Customs',
-    description: 'A meaningful ritual performed as part of traditional wedding customs.',
+    caption: 'Timeless Moments',
+    description: 'Capturing small gestures that mean so much.',
   },
   {
     src: '/images/wedding/1 (9).webp',
     alt: 'Flower Shower',
-    caption: 'Blessed with Love',
-    description: 'A vibrant moment as friends shower the couple with love.',
+    caption: 'Showered with Love',
+    description: 'Joy and laughter as friends celebrate with petals.',
   },
   {
     src: '/images/wedding/75.webp',
     alt: 'Emotional Moments',
-    caption: 'Persuit of Joy',
-    description: 'A touching moment filled with emotions and heartfelt blessings.',
+    caption: 'Heartfelt Joy',
+    description: 'Tears of happiness, hugs, and genuine emotions shared.',
   },
   {
     src: '/images/wedding/7 (2).webp',
     alt: 'Candid Bride',
     caption: 'Unfiltered Beauty',
-    description: 'A spontaneous candid capture revealing the bride’s natural charm.',
+    description: 'Spontaneous moments that show her true personality.',
   },
   {
     src: '/images/wedding/94.webp',
     alt: 'Guest Portrait',
     caption: 'Smiles All Around',
-    description: 'Happy faces of loved ones celebrating the joyous occasion.',
+    description: 'Loved ones sharing laughter and happiness.',
   },
-  
- 
   {
     src: '/images/wedding/983.webp',
     alt: 'Celebration Moment',
     caption: 'Bright & Beautiful',
-    description: 'A warm and vibrant moment from the day’s celebration.',
+    description: 'Vibrant energy and warmth from the day’s celebration.',
     orientation: 'vertical',
   },
+
   
 ];
 
