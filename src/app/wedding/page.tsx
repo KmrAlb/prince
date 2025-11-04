@@ -14,13 +14,13 @@ interface WeddingImage {
 }
 const WEDDING_IMAGES: WeddingImage[] = [
   {
-    src: '/images/prewedding/1 (3).webp',
+    src: '/images/wedding/9.webp',
     alt: 'Haldi Ceremony',
     caption: 'A Golden Glow',
     description: 'The ritual of applying turmeric to the bride and groom, signifying purity and blessings.',
   },
   {
-    src: '/images/wedding/9 (1).webp',
+    src: '/images/prewedding/1 (3).webp',
     alt: 'Mehndi Ceremony',
     caption: 'Patterns of Love',
     description: 'Beautiful henna designs adorn the bride, symbolizing joy and celebration.',
@@ -32,105 +32,111 @@ const WEDDING_IMAGES: WeddingImage[] = [
     description: 'An evening of music and dance to celebrate the upcoming union.',
   },
   {
-    src: '/images/wedding/7 (2).webp',
+    src: '/images/wedding/592.webp',
     alt: 'Wedding Vows',
     caption: 'Promises of Forever',
     description: 'A sacred ceremony where vows are exchanged, binding two souls as one.',
   },
   {
-    src: '/images/wedding/9.webp',
+    src: '/images/wedding/982.webp',
     alt: 'Baraat Procession',
     caption: 'A Royal Entry',
     description: 'The grand entrance, filled with music, dance, and excitement.',
+        orientation: 'vertical',
+
   },
   {
-    src: '/images/wedding/1 (10).webp',
+    src: '/images/wedding/892a.webp',
     alt: 'Jaimala Ceremony',
     caption: 'A Garland of Love',
     description: 'The exchange of garlands, symbolizing acceptance and mutual respect.',
   },
   {
-    src: '/images/wedding/1 (5).webp',
+    src: '/images/wedding/631a.webp',
     alt: 'Mandap Rituals',
     caption: 'Sacred Traditions',
     description: 'Traditional rituals performed under the mandap to invoke blessings from the divine.',
   },
  
   {
-    src: '/images/wedding/592.webp',
+    src: '/images/wedding/656.webp',
     alt: 'Bridal Portrait',
     caption: 'Elegance in Frame',
     description: 'A serene portrait capturing the bride’s grace and beauty before the celebrations begin.',
   },
   {
-    src: '/images/wedding/09.webp',
+    src: '/images/wedding/091.webp',
     alt: 'Joyful Celebration',
     caption: 'Moments of Happiness',
     description: 'Candid smiles shared between family members during the festivities.',
   },
   {
-    src: '/images/wedding/13.webp',
+    src: '/images/wedding/102.webp',
     alt: 'Couple Shoot',
     caption: 'Together Forever',
     description: 'A romantic moment capturing the couple’s bond before the ceremony.',
+        orientation: 'vertical',
+
   },
   {
-    src: '/images/wedding/16.webp',
+    src: '/images/wedding/103.webp',
     alt: 'Bridal Jewellery',
     caption: 'Adorned in Tradition',
     description: 'Intricate jewelry pieces that reflect culture, beauty, and elegance.',
+     orientation: 'vertical',
+
   },
   {
-    src: '/images/wedding/17a.webp',
+    src: '/images/wedding/1.webp',
     alt: 'Groom Portrait',
     caption: 'Royal Charm',
     description: 'A poised portrait of the groom dressed in traditional attire.',
   },
   {
-    src: '/images/wedding/656.webp',
+    src: '/images/wedding/7 (1).webp',
     alt: 'Family Rituals',
     caption: 'Blessings and Traditions',
     description: 'A heartfelt ritual performed with the family surrounding the couple.',
   },
   
   {
-    src: '/images/wedding/726.webp',
+    src: '/images/wedding/7 (2).webp',
     alt: 'Bridal Mehndi Close-up',
     caption: 'Art in Detail',
     description: 'A close look at the intricate henna designs symbolizing love and joy.',
   },
   {
-    src: '/images/wedding/669.webp',
+    src: '/images/wedding/1 (10).webp',
     alt: 'Couple Entrance',
     caption: 'A Magical Arrival',
     description: 'The grand moment as the couple walks into the venue, welcomed by cheers.',
   },
   {
-    src: '/images/wedding/592.webp',
+    src: '/images/wedding/1 (11).webp',
     alt: 'Cultural Rituals',
     caption: 'Timeless Customs',
     description: 'A meaningful ritual performed as part of traditional wedding customs.',
   },
   {
-    src: '/images/wedding/598.webp',
+    src: '/images/wedding/1 (9).webp',
     alt: 'Flower Shower',
     caption: 'Blessed with Love',
     description: 'A vibrant moment as friends shower the couple with love.',
   },
   {
-    src: '/images/wedding/091.webp',
+    src: '/images/wedding/75.webp',
     alt: 'Emotional Moments',
     caption: 'Persuit of Joy',
     description: 'A touching moment filled with emotions and heartfelt blessings.',
   },
   {
-    src: '/images/wedding/45.webp',
+    src: '/images/wedding/7 (2).webp',
     alt: 'Candid Bride',
     caption: 'Unfiltered Beauty',
     description: 'A spontaneous candid capture revealing the bride’s natural charm.',
   },
   {
-    src: '/images/wedding/75.webp',
+    src: '/images/wedding/94.webp',
     alt: 'Guest Portrait',
     caption: 'Smiles All Around',
     description: 'Happy faces of loved ones celebrating the joyous occasion.',
@@ -138,40 +144,13 @@ const WEDDING_IMAGES: WeddingImage[] = [
   
  
   {
-    src: '/images/wedding/94.webp',
+    src: '/images/wedding/983.webp',
     alt: 'Celebration Moment',
     caption: 'Bright & Beautiful',
     description: 'A warm and vibrant moment from the day’s celebration.',
     orientation: 'vertical',
   },
-  {
-    src: '/images/wedding/101.webp',
-    alt: 'Joyful Evening',
-    caption: 'In Motion',
-    description: 'A lively scene filled with energy and smiles.',
-    orientation: 'vertical',
-  },
-  {
-    src: '/images/wedding/102.webp',
-    alt: 'Candid Snapshot',
-    caption: 'Simply Timeless',
-    description: 'A clean and elegant frame capturing the atmosphere.',
-    orientation: 'vertical',
-  },
-  {
-    src: '/images/wedding/103.webp',
-    alt: 'Captured Detail',
-    caption: 'Soft Highlights',
-    description: 'A subtle and refined moment with calm lighting.',
-    orientation: 'vertical',
-  },
-  {
-    src: '/images/wedding/982.webp',
-    alt: 'Visual Harmony',
-    caption: 'Balanced & Bright',
-    description: 'A neatly framed shot with smooth tones and clarity.',
-    orientation: 'vertical',
-  },
+  
 ];
 
 const Sparkle = () => (

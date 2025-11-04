@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image';
 
 // Define the structure of image data
 interface ImageData {
@@ -15,13 +15,6 @@ interface ImageData {
 
 // Sample birthday images
 const BIRTHDAY_IMAGES: ImageData[] = [
-  {
-    src: '/images/birthday/1 (3).webp',
-    alt: 'Birthday Party 1',
-    caption: 'A day filled with joy.',
-    description:
-      'Celebrating another year of laughter, love, and special memories with friends and family.',
-  },
   {
     src: '/images/birthday/1 (6).webp',
     alt: 'Birthday Party 2',
@@ -44,46 +37,92 @@ const BIRTHDAY_IMAGES: ImageData[] = [
       'Opening presents with excitement, surrounded by love and happiness, making unforgettable memories.',
   },
   {
-    src: '/images/birthday/1 (5).webp',
+    src: '/images/birthday/1 (2).webp',
     alt: 'Birthday Party 5',
     caption: 'The perfect celebration.',
     description:
       'From decorations to games, every detail comes together to create a birthday celebration to remember.',
   },
+  {
+    src: '/images/birthday/47.webp',
+    alt: 'Birthday Party 6',
+    caption: 'Smiles that light up the room.',
+    description:
+      'Capturing genuine happiness and heartfelt moments shared during this special celebration.',
+  },
+  {
+    src: '/images/birthday/89.webp',
+    alt: 'Birthday Party 7',
+    caption: 'A day full of surprises.',
+    description:
+      'From unexpected gifts to joyful reactions, every moment adds magic to the day.',
+  },
+  {
+    src: '/images/birthday/24.webp',
+    alt: 'Birthday Party 8',
+    caption: 'Making memories that last.',
+    description:
+      'Documenting laughter, play, and precious bonds that make birthdays unforgettable.',
+  },
+  {
+    src: '/images/birthday/98.webp',
+    alt: 'Birthday Party 9',
+    caption: 'A celebration of togetherness.',
+    description:
+      'Friends and family come together to share love, laughter, and joyful moments.',
+  },
+  {
+    src: '/images/birthday/51.webp',
+    alt: 'Birthday Party 10',
+    caption: 'Joy in every detail.',
+    description:
+      'Colorful decorations, bright smiles, and heartfelt wishes create the perfect celebration.',
+  },
+  {
+    src: '/images/birthday/82.webp',
+    alt: 'Birthday Party 11',
+    caption: 'Candles, wishes, and wonder.',
+    description:
+      'Capturing the magical moment when wishes are made and candles glow bright.',
+  },
+  {
+    src: '/images/birthday/36.webp',
+    alt: 'Birthday Party 12',
+    caption: 'A moment worth celebrating.',
+    description:
+      'From warm hugs to cheerful cheers, every second reflects the joy of the occasion.',
+  },
 ];
 
-// Sparkle animation component
+// Sparkle animation
 const Sparkle = () => (
   <motion.div
     className="absolute w-1 h-1 bg-white rounded-full opacity-70 animate-sparkle"
-    style={{
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-    }}
+    style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
   />
 );
 
-// Raindrop animation component
+// Raindrop animation
 const RainDrop = () => (
   <motion.div
     className="absolute w-1 h-6 bg-white rounded-full opacity-50"
     initial={{ opacity: 0 }}
     animate={{ opacity: 0.3, y: 64 }}
-    transition={{
-      duration: 1.5,
-      repeat: Infinity,
-      delay: Math.random() * 1.5,
-    }}
-    style={{
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * -20}px`,
-    }}
+    transition={{ duration: 1.5, repeat: Infinity, delay: Math.random() * 1.5 }}
+    style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * -20}px` }}
   />
 );
 
-// BirthdayPage component
 const BirthdayPage = () => {
   const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
+
+  // ✅ Add body scroll lock (same as WeddingPage)
+  useEffect(() => {
+    document.body.style.overflow = selectedImage ? 'hidden' : 'unset';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedImage]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
@@ -103,6 +142,7 @@ const BirthdayPage = () => {
         {Array.from({ length: 30 }).map((_, i) => (
           <RainDrop key={`rain-${i}`} />
         ))}
+
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
           initial={{ opacity: 0, y: 20 }}
@@ -118,14 +158,17 @@ const BirthdayPage = () => {
             >
               Birthday Celebrations
             </motion.h1>
+
             <motion.div
               className="flex items-center justify-center space-x-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-            > 
+            >
               <Sparkles className="w-5 h-5" />
-              <p className="text-lg md:text-xl">A day full of love, laughter, and memories</p>
+              <p className="text-lg md:text-xl">
+                A day full of love, laughter, and memories
+              </p>
               <Sparkles className="w-5 h-5" />
             </motion.div>
           </div>
@@ -152,56 +195,58 @@ const BirthdayPage = () => {
                 className="relative overflow-hidden shadow-xl cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
-                {/* Replace img with Image */}
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  layout="responsive" // Use responsive layout for better performance
-                  width={800} // Specify width for optimization
-                  height={600} // Specify height for optimization
+                  layout="responsive"
+                  width={800}
+                  height={600}
                   className="rounded-none"
                 />
               </motion.div>
             </div>
+
             <motion.div
               className="w-full md:w-1/2 space-y-4"
               whileHover={{ x: index % 2 === 0 ? 10 : -10 }}
             >
-              <h2 className="text-2xl font-semibold text-gray-800">{image.caption}</h2>
-              <p className="text-gray-600 leading-relaxed">{image.description}</p>
+              <h2 className="text-2xl font-semibold text-gray-800">
+                {image.caption}
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                {image.description}
+              </p>
             </motion.div>
           </motion.div>
         ))}
       </div>
 
       {/* Modal */}
-      {/* Modal */}
-      
       <AnimatePresence>
         {selectedImage && (
           <motion.div
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            initial={{ opacity :0 }}
-            animate={{ opacity :1}}
-            exit={{opacity :0}}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
           >
             <motion.div
-              initial={{opacity :0 , scale :0.9}}
-              animate={{opacity :1 , scale :1}}
-              exit={{opacity :0 , scale :0.9}}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
               className="relative max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Replace img with Image in modal */}
               <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                layout="responsive" // Use responsive layout for better performance
-                width={800} // Specify width for optimization
-                height={600} // Specify height for optimization
+                layout="responsive"
+                width={800}
+                height={600}
                 className="rounded-none shadow-2xl"
               />
+
               <button
                 onClick={() => setSelectedImage(null)}
                 className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"

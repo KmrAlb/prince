@@ -50,6 +50,35 @@ const PREWEDDING_IMAGES: PreWeddingImage[] = [
     description:
       'Our sessions are designed to bring out the beauty of your love story, capturing its every nuance and detail.',
   },
+  {
+  src: '/images/prewedding/787.webp',
+  alt: 'Pre-Wedding Photo 7',
+  caption: 'Moments that feel like magic.',
+  description:
+    'Every glance, every touch, every smile—captured naturally to reflect the magic of your love.',
+},
+{
+  src: '/images/prewedding/785.webp',
+  alt: 'Pre-Wedding Photo 8',
+  caption: 'Where love meets timeless beauty.',
+  description:
+    'We create elegant and heartfelt portraits that highlight your bond in the most authentic way.',
+},
+{
+  src: '/images/prewedding/2.webp',
+  alt: 'Pre-Wedding Photo 9',
+  caption: 'Together is a beautiful place to be.',
+  description:
+    'Capturing tender moments and natural emotions that tell your love story beautifully.',
+},
+{
+  src: '/images/prewedding/0.webp',
+  alt: 'Pre-Wedding Photo 10',
+  caption: 'A journey captured in frames.',
+  description:
+    'From intimate moments to grand expressions, we document your story with passion and artistry.',
+},
+
 ];
 
 const Sparkle = () => (

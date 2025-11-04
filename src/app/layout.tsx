@@ -7,8 +7,8 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Vivah Tales',
-  description: 'Professional wedding photography and cinematography services',
+  title: 'Vivaah Tales',
+  description: 'WEDDING FILM & PHOTO',
 };
 
 export default function RootLayout({

@@ -42,15 +42,15 @@ const Hero = () => {
         style={{ objectFit: 'cover' }}
       />
       <div className="absolute inset-0 bg-black bg-opacity-40">
-        <div className="h-full max-w-7xl mx-auto px-4 flex items-center justify-center">
+        <div className="h-full max-w-4xl mx-auto px-3 flex items-center justify-center">
           <div className="text-center text-white">
             <h1
               className="text-4xl md:text-6xl font-bold mb-4 opacity-0 transition-all duration-700 ease-out transform -translate-y-10 animate-slide-up"
             >
-              Capturing Your Special Moments
+              Cherish your moments Relive the magic
             </h1>
             <p className="text-xl md:text-2xl opacity-0 transition-all duration-700 ease-out transform -translate-y-10 animate-slide-up delay-200">
-              Professional Wedding Photography & Cinematography
+              WEDDING FILM & PHOTO
             </p>
           </div>
         </div>

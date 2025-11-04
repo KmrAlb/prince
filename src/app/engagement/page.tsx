@@ -14,7 +14,7 @@ interface EngagementImage {
 
 const ENGAGEMENT_IMAGES: EngagementImage[] = [
   {
-    src: '/images/engagement/1 (8).webp',
+    src: '/images/engagement/4.webp',
     alt: 'Engagement 1',
     caption: 'A promise of love.',
     description:
@@ -28,14 +28,14 @@ const ENGAGEMENT_IMAGES: EngagementImage[] = [
       'The joy of engagement fills the air as families come together to celebrate love.',
   },
   {
-    src: '/images/engagement/1 (3).webp',
+    src: '/images/engagement/7.webp',
     alt: 'Engagement 3',
     caption: 'A ring of commitment.',
     description:
       'The exchange of rings symbolizes a commitment that lasts a lifetime.',
   },
   {
-    src: '/images/engagement/1 (9).webp',
+    src: '/images/engagement/5.webp',
     alt: 'Engagement 4',
     caption: 'Surrounded by love.',
     description:
@@ -48,7 +48,28 @@ const ENGAGEMENT_IMAGES: EngagementImage[] = [
     description:
       'An evening filled with laughter, joy, and the promise of a beautiful future together.',
   },
-  
+  {
+  src: '/images/engagement/1 (3).webp',
+  alt: 'Engagement 6',
+  caption: 'Hand in hand, forever begins.',
+  description:
+    'Capturing a heartfelt moment as the couple celebrates the start of their journey together.',
+},
+{
+  src: '/images/engagement/6.webp',
+  alt: 'Engagement 7',
+  caption: 'A promise beautifully made.',
+  description:
+    'A tender exchange of emotions as two souls commit to a lifetime of togetherness.',
+},
+{
+  src: '/images/engagement/8.webp',
+  alt: 'Engagement 8',
+  caption: 'Love that lights the room.',
+  description:
+    'The couple glows with joy as family and friends surround them in celebration.',
+},
+
 ];
 
 const Sparkle = () => (

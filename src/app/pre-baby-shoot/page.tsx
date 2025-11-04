@@ -37,14 +37,14 @@ const PREBABY_IMAGES: PreBabyImage[] = [
       "Documenting the unique charm of your baby's first year with care and attention.",
   },
   {
-    src: '/images/prebaby/1 (1).webp',
+    src: '/images/prebaby/1 (2).webp',
     alt: 'Pre-Baby Photoshoot 4',
     caption: 'Cherishing the moments that matter.',
     description:
       'From their first laugh to their tiny steps, we help you treasure these milestones forever.',
   },
   {
-    src: '/images/prebaby/1 (2).webp',
+    src: '/images/prebaby/1 (1).webp',
     alt: 'Pre-Baby Photoshoot 5',
     caption: 'Big love for little ones.',
     description:
@@ -57,6 +57,49 @@ const PREBABY_IMAGES: PreBabyImage[] = [
     description:
       'Capturing early childhood moments with warmth and authenticity.',
   },
+  {
+  src: '/images/prebaby/41.webp',
+  alt: '4-Month Baby Photoshoot',
+  caption: 'Four months of pure wonder.',
+  description:
+    'Capturing growing curiosity, brighter smiles, and beautiful early milestones.',
+},
+{
+  src: '/images/prebaby/5.webp',
+  alt: '5-Month Baby Photoshoot',
+  caption: 'Little hands, big happiness.',
+  description:
+    'Celebrating the fifth month with adorable expressions and playful personality.',
+},
+{
+  src: '/images/prebaby/6month (1).webp',
+  alt: '6-Month Baby Photoshoot',
+  caption: 'Halfway to one, full of love.',
+  description:
+    'Documenting the exciting half-year mark with warm and lively portraits.',
+},
+{
+  src: '/images/prebaby/11.webp',
+  alt: '1-Year Birthday Photoshoot',
+  caption: 'One year of joy and giggles.',
+  description:
+    'A special milestone filled with laughter, innocence, and big first adventures.',
+},
+{
+  src: '/images/prebaby/101.webp',
+  alt: '2-Year Toddler Photoshoot',
+  caption: 'Two years of growing wonder.',
+  description:
+    'Capturing the energetic, curious, and heartwarming moments of toddlerhood.',
+},
+{
+  src: '/images/prebaby/55.webp',
+  alt: '5-Year Kids Photoshoot',
+  caption: 'Five and full of dreams.',
+  description:
+    'Celebrating personality, imagination, and childhood magic at five years old.',
+},
+
 ];
 
 const Sparkle = () => (
