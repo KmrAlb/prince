@@ -114,13 +114,13 @@ const WEDDING_IMAGES: WeddingImage[] = [
   {
     src: '/images/wedding/598.webp',
     alt: 'Flower Shower',
-    caption: 'Blessed with Petals',
-    description: 'A vibrant moment as friends shower the couple with flowers.',
+    caption: 'Blessed with Love',
+    description: 'A vibrant moment as friends shower the couple with love.',
   },
   {
     src: '/images/wedding/091.webp',
     alt: 'Emotional Moments',
-    caption: 'Tears of Joy',
+    caption: 'Persuit of Joy',
     description: 'A touching moment filled with emotions and heartfelt blessings.',
   },
   {
