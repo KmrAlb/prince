@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand Section */}
           <div>
-            <h3 className="text-2xl font-semibold tracking-wide mb-4">VivahTales</h3>
+            <h3 className="text-2xl font-semibold tracking-wide mb-4">VivaahTales</h3>
             <p className="text-gray-400 leading-relaxed">
             Preserving your most cherished moments with unmatched creativity and heartfelt passion, crafting timeless memories that last a lifetime
             </p>
@@ -65,7 +65,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} xkeystroke. All rights reserved.
+            © {new Date().getFullYear()} kumaralok. All rights reserved.
           </p>
         </div>
       </div>
