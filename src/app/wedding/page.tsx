@@ -9,8 +9,9 @@ interface WeddingImage {
   alt: string;
   caption: string;
   description: string;
-}
+  orientation?: 'vertical' | 'landscape';
 
+}
 const WEDDING_IMAGES: WeddingImage[] = [
   {
     src: '/images/prewedding/1 (3).webp',
@@ -54,27 +55,129 @@ const WEDDING_IMAGES: WeddingImage[] = [
     caption: 'Sacred Traditions',
     description: 'Traditional rituals performed under the mandap to invoke blessings from the divine.',
   },
+ 
   {
-    src: '/images/wedding/1 (9).webp',
-    alt: 'Sindoor Ceremony',
-    caption: 'A Mark of Commitment',
-    description: "The groom applies sindoor on the bride's forehead, marking the start of their marital journey.",
+    src: '/images/wedding/592.webp',
+    alt: 'Bridal Portrait',
+    caption: 'Elegance in Frame',
+    description: 'A serene portrait capturing the bride’s grace and beauty before the celebrations begin.',
   },
   {
-    src: '/images/wedding/7 (1).webp',
-    alt: 'Reception Night',
-    caption: 'A Grand Celebration',
-    description: 'A night to celebrate the union with family and friends through dance, laughter, and love.',
+    src: '/images/wedding/09.webp',
+    alt: 'Joyful Celebration',
+    caption: 'Moments of Happiness',
+    description: 'Candid smiles shared between family members during the festivities.',
+  },
+  {
+    src: '/images/wedding/13.webp',
+    alt: 'Couple Shoot',
+    caption: 'Together Forever',
+    description: 'A romantic moment capturing the couple’s bond before the ceremony.',
+  },
+  {
+    src: '/images/wedding/16.webp',
+    alt: 'Bridal Jewellery',
+    caption: 'Adorned in Tradition',
+    description: 'Intricate jewelry pieces that reflect culture, beauty, and elegance.',
+  },
+  {
+    src: '/images/wedding/17a.webp',
+    alt: 'Groom Portrait',
+    caption: 'Royal Charm',
+    description: 'A poised portrait of the groom dressed in traditional attire.',
+  },
+  {
+    src: '/images/wedding/656.webp',
+    alt: 'Family Rituals',
+    caption: 'Blessings and Traditions',
+    description: 'A heartfelt ritual performed with the family surrounding the couple.',
+  },
+  
+  {
+    src: '/images/wedding/726.webp',
+    alt: 'Bridal Mehndi Close-up',
+    caption: 'Art in Detail',
+    description: 'A close look at the intricate henna designs symbolizing love and joy.',
+  },
+  {
+    src: '/images/wedding/669.webp',
+    alt: 'Couple Entrance',
+    caption: 'A Magical Arrival',
+    description: 'The grand moment as the couple walks into the venue, welcomed by cheers.',
+  },
+  {
+    src: '/images/wedding/592.webp',
+    alt: 'Cultural Rituals',
+    caption: 'Timeless Customs',
+    description: 'A meaningful ritual performed as part of traditional wedding customs.',
+  },
+  {
+    src: '/images/wedding/598.webp',
+    alt: 'Flower Shower',
+    caption: 'Blessed with Petals',
+    description: 'A vibrant moment as friends shower the couple with flowers.',
+  },
+  {
+    src: '/images/wedding/091.webp',
+    alt: 'Emotional Moments',
+    caption: 'Tears of Joy',
+    description: 'A touching moment filled with emotions and heartfelt blessings.',
+  },
+  {
+    src: '/images/wedding/45.webp',
+    alt: 'Candid Bride',
+    caption: 'Unfiltered Beauty',
+    description: 'A spontaneous candid capture revealing the bride’s natural charm.',
+  },
+  {
+    src: '/images/wedding/75.webp',
+    alt: 'Guest Portrait',
+    caption: 'Smiles All Around',
+    description: 'Happy faces of loved ones celebrating the joyous occasion.',
+  },
+  
+ 
+  {
+    src: '/images/wedding/94.webp',
+    alt: 'Celebration Moment',
+    caption: 'Bright & Beautiful',
+    description: 'A warm and vibrant moment from the day’s celebration.',
+    orientation: 'vertical',
+  },
+  {
+    src: '/images/wedding/101.webp',
+    alt: 'Joyful Evening',
+    caption: 'In Motion',
+    description: 'A lively scene filled with energy and smiles.',
+    orientation: 'vertical',
+  },
+  {
+    src: '/images/wedding/102.webp',
+    alt: 'Candid Snapshot',
+    caption: 'Simply Timeless',
+    description: 'A clean and elegant frame capturing the atmosphere.',
+    orientation: 'vertical',
+  },
+  {
+    src: '/images/wedding/103.webp',
+    alt: 'Captured Detail',
+    caption: 'Soft Highlights',
+    description: 'A subtle and refined moment with calm lighting.',
+    orientation: 'vertical',
+  },
+  {
+    src: '/images/wedding/982.webp',
+    alt: 'Visual Harmony',
+    caption: 'Balanced & Bright',
+    description: 'A neatly framed shot with smooth tones and clarity.',
+    orientation: 'vertical',
   },
 ];
 
 const Sparkle = () => (
   <motion.div
     className="absolute w-1 h-1 bg-white rounded-full opacity-70 animate-sparkle"
-    style={{
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-    }}
+    style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
   />
 );
 
@@ -83,15 +186,8 @@ const RainDrop = () => (
     className="absolute w-1 h-6 bg-white rounded-full opacity-50"
     initial={{ opacity: 0 }}
     animate={{ opacity: 0.3, y: 64 }}
-    transition={{
-      duration: 1.5,
-      repeat: Infinity,
-      delay: Math.random() * 1.5,
-    }}
-    style={{
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * -20}px`,
-    }}
+    transition={{ duration: 1.5, repeat: Infinity, delay: Math.random() * 1.5 }}
+    style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * -20}px` }}
   />
 );
 
@@ -129,27 +225,11 @@ const WeddingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div
-            className="text-center"
-            style={{
-              color: '#FFFFFF',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
-            }}
-          >
-            <motion.h1
-              className="text-4xl md:text-5xl font-bold"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
+          <div className="text-center text-white" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7)' }}>
+            <motion.h1 className="text-4xl md:text-5xl font-bold" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
               Wedding Moments
             </motion.h1>
-            <motion.p
-              className="text-lg md:text-xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
+            <motion.p className="text-lg md:text-xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
               Celebrating love, joy, and togetherness
             </motion.p>
           </div>
@@ -179,16 +259,13 @@ const WeddingPage = () => {
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  width={800}
-                  height={600}
-                  className="rounded-none object-cover"
+                  width={image.orientation === 'vertical' ? 600 : 800}
+                  height={image.orientation === 'vertical' ? 800 : 600}
+                  className={`rounded-none ${image.orientation === 'vertical' ? 'object-contain' : 'object-cover'}`}
                 />
               </motion.div>
             </div>
-            <motion.div
-              className="w-full md:w-1/2 space-y-4"
-              whileHover={{ x: index % 2 === 0 ? 10 : -10 }}
-            >
+            <motion.div className="w-full md:w-1/2 space-y-4" whileHover={{ x: index % 2 === 0 ? 10 : -10 }}>
               <h2 className="text-2xl font-semibold text-gray-800">{image.caption}</h2>
               <p className="text-gray-600 leading-relaxed">{image.description}</p>
             </motion.div>
@@ -210,32 +287,22 @@ const WeddingPage = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="relative max-w-4xl w-full"
+              className="relative w-full max-w-3xl max-h-[90vh] flex justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                width={800}
-                height={600}
-                className="rounded-none shadow-2xl"
+                width={selectedImage.orientation === 'vertical' ? 600 : 800}
+                height={selectedImage.orientation === 'vertical' ? 800 : 600}
+                className={`rounded-none shadow-2xl ${selectedImage.orientation === 'vertical' ? 'object-contain' : 'object-cover'}`}
               />
               <button
                 onClick={() => setSelectedImage(null)}
                 className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </motion.div>

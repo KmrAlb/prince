@@ -100,7 +100,7 @@ const PreWeddingPage = () => {
       <motion.div
         className="relative h-64 overflow-hidden"
         style={{
-          backgroundImage: "url('/images/prewedding/1 (1).webp')",
+          backgroundImage: "url('/images/prewedding/00-1.webp')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

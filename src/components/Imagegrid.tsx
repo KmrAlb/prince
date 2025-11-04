@@ -11,6 +11,8 @@ const latestWorksData = [
   { name: 'Pre-Wedding', href: '/pre-wedding' },
   { name: 'Wedding', href: '/wedding' },
   { name: 'Birthday', href: '/birthday' },
+  { name: 'Baby-Shower', href: '/baby-shower' },
+
 ];
 
 const LatestWorks = () => {
