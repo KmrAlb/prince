@@ -52,10 +52,11 @@ const WEDDING_IMAGES: WeddingImage[] = [
     description: 'Exchanging garlands, smiles, and playful glances.',
   },
   {
-    src: '/images/wedding/631a.webp',
-    alt: 'Mandap Rituals',
-    caption: 'Sacred Traditions',
-    description: 'Quiet moments of reflection, laughter, and shared happiness.',
+    src: '/images/engagement/5.webp',
+    alt: 'Engagement 4',
+    caption: 'Surrounded by love.',
+    description:
+      "Loved ones gather to share in the happiness of the couple's engagement.",
   },
   {
     src: '/images/wedding/656.webp',
