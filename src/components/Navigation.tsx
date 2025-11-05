@@ -27,7 +27,7 @@ const Navigation = () => {
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/" className="text-3xl font-bold tracking-tight hover:text-purple-400 transition-colors duration-300">
-                VivaahTales
+                Vivaah Tales
               </Link>
             </div>
             {/* Desktop Navigation */}
