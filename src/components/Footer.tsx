@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand Section */}
           <div>
-            <h3 className="text-2xl font-semibold tracking-wide mb-4">VivaahTales</h3>
+            <h3 className="text-2xl font-semibold tracking-wide mb-4">Vivaah Tales</h3>
             <p className="text-gray-400 leading-relaxed">
             Preserving your most cherished moments with unmatched creativity and heartfelt passion, crafting timeless memories that last a lifetime
             </p>

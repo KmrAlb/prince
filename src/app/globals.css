@@ -2,356 +2,163 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import romantic serif font for headings and modern sans for body */
+/* ----------------------------------------------
+   FONTS — WEDDING AESTHETIC
+---------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:wght@400;500;600&display=swap');
 
+/* ----------------------------------------------
+   COLOR THEME — SOFT, ROMANTIC WEDDING PALETTE
+---------------------------------------------- */
 :root {
-  --background: #f8f0f2;          /* Soft off-white */
-  --foreground: #3b3b3b;          /* Dark charcoal */
-  --accent: #a77b91;              /* Muted rose */
-  --accent-hover: #9a6d7e;        /* Slightly darker muted rose */
-  --secondary-bg: #eae1e3;        /* Light grayish pink */
-  --muted: #a8a8a8;               /* Muted gray for text */
-  --border: #d3c6cb;              /* Soft pink border */
-  --card-bg: #ffffff;             /* Pure white for cards */
-  --shadow: rgba(150, 100, 115, 0.1);
-  --transition-duration: 0.3s;
+  --background: #fdf7f8;           
+  --foreground: #3b2f32;           
+  --accent: #b26182;               
+  --accent-hover: #a45474;
+  --border: #e8ccd6;
+  --muted: #a5999d;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --input-border: #d8b4c3;
+  --shadow: rgba(150, 80, 110, 0.15);
 }
 
+/* DARK MODE */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #2c2a2e;        /* Deep charcoal */
-    --foreground: #e0d4d8;        /* Light grayish pink */
-    --accent: #d09ca1;            /* Soft dusty rose */
-    --accent-hover: #c68b93;      /* Lighter rose for hover */
-    --secondary-bg: #3a3539;      /* Darker background */
-    --muted: #b0a8ab;              /* Muted pink-gray */
-    --border: #4f4347;            /* Darker rose border */
-    --card-bg: #3f383c;           /* Slightly lighter than background */
-    --shadow: rgba(210, 156, 161, 0.15);
+    --background: #1e1a1c;
+    --foreground: #f1e2e6;
+    --accent: #ee88aa;
+    --accent-hover: #ff9bb8;
+    --border: #4a3c42;
+    --muted: #c2b1b5;
+    --card-bg: #2b2628;
+    --input-bg: #353033;
+    --input-border: #ee88aa;
+    --shadow: rgba(255, 150, 170, 0.2);
   }
 }
 
-/* Global Styles */
+/* ----------------------------------------------
+   GLOBAL STYLES
+---------------------------------------------- */
 body {
-  background-color: var(--background);
+  background: var(--background);
   color: var(--foreground);
   font-family: 'Lora', serif;
   line-height: 1.75;
 }
 
-/* Typography */
+/* ----------------------------------------------
+   TYPOGRAPHY
+---------------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Cormorant Garamond', serif;
-  color: white; /* Set all headings to white */
-  line-height: 1.3;
+  color: var(--foreground);
+  line-height: 1.2;
 }
 
 .section-title {
   color: var(--accent);
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
-/* Form Elements */
-input, textarea, select {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border);
-  color: var(--foreground);
-  transition: all var(--transition-duration);
+/* ----------------------------------------------
+   FORMS — HIGH CONTRAST & WEDDING FEEL
+---------------------------------------------- */
+input,
+textarea,
+select {
+  background: var(--input-bg) !important;
+  color: var(--foreground) !important;
+  border: 2px solid var(--input-border) !important;
+  padding: 0.9rem;
+  border-radius: 0.75rem;
+  transition: 0.25s ease;
 }
 
-input:focus, textarea:focus, select:focus {
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(167,123,145,0.2);
+  box-shadow: 0 0 0 4px rgba(178, 97, 130, 0.25);
 }
 
-/* Button Styles */
+/* ----------------------------------------------
+   BUTTONS
+---------------------------------------------- */
 .btn-primary {
-  background-color: var(--accent);
+  background: linear-gradient(to right, var(--accent), var(--accent-hover));
   color: white;
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
-  transition: all var(--transition-duration);
+  padding: 0.85rem 2.2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: 0.25s ease;
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-hover);
+  transform: scale(1.03);
+  background: linear-gradient(to right, var(--accent-hover), var(--accent));
 }
 
-/* Card Styles */
+/* ----------------------------------------------
+   CARDS
+---------------------------------------------- */
 .card {
-  background-color: var(--card-bg);
-  border-radius: 1rem;
+  background: var(--card-bg);
   border: 1px solid var(--border);
-  transition: transform var(--transition-duration),
-              box-shadow var(--transition-duration);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 5px 20px var(--shadow);
+  transition: 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 8px 24px var(--shadow);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px var(--shadow);
 }
 
-/* Custom Animations */
+/* ----------------------------------------------
+   ELEGANT WEDDING ANIMATIONS
+---------------------------------------------- */
+
+/* Fade In */
 @keyframes fadeIn {
-   from {
-     opacity: 0;
-     transform: translateY(10px);
-   }
-   to {
-     opacity: 1;
-     transform: translateY(0);
-   }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-.animate-fade-in {
-   animation: fadeIn .8s ease-out forwards;
-}
-
-.hover\:shadow-glow:hover {
-   box-shadow:
-     rgba(255,255,255,.8) -5px -5px,
-     rgba(255,255,255,.8) -10px -10px,
-     rgba(255,255,255,.8) -15px -15px,
-     rgba(255,255,255,.8) -20px -20px,
-     rgba(255,255,255,.8) -25px -25px,
-     rgba(255,255,255,.8) -30px -30px,
-     rgba(255,255,255,.8) -35px -35px,
-     rgba(255,255,255,.8) -40px -40px,
-     rgba(255,255,255,.8) -45px -45px;
-}
-/* Custom Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  
-to {
-    opacity: 1;
-    transform: translateY(0);
-}
-}
-
-.animate-fade-in {
-   animation: fadeIn .8s ease-out forwards;
-}
-
-
-.hover\:shadow-glow:hover {
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 
-                0 0 10px rgba(255, 255, 255, 0.8), 
-                0 0 15px rgba(255, 255, 255, 0.8);
-}
-
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-   animation: fadeIn 0.5s ease-out forwards;
-}
-
-/* Sparkle Keyframes - Multiple Variations */
-@keyframes sparkle-fade {
-  0%, 100% {
-    transform: scale(0.4) rotate(0deg);
-    opacity: 0;
-    filter: brightness(1);
-  }
-  25% {
-    transform: scale(1.2) rotate(90deg);
-    opacity: 1;
-    filter: brightness(1.5);
-  }
-  50% {
-    transform: scale(1) rotate(180deg);
-    opacity: 0.8;
-    filter: brightness(1.2);
-  }
-  75% {
-    transform: scale(1.1) rotate(270deg);
-    opacity: 0.9;
-    filter: brightness(1.3);
-  }
-}
-
-@keyframes sparkle-pulse {
-  0%, 100% {
-    transform: scale(0.6) translate(0, 0);
-    opacity: 0.5;
-    filter: blur(0px);
-  }
-  33% {
-    transform: scale(1.2) translate(-5px, -5px);
-    opacity: 1;
-    filter: blur(1px);
-  }
-  66% {
-    transform: scale(0.8) translate(5px, -10px);
-    opacity: 0.8;
-    filter: blur(0.5px);
-  }
-}
-
-@keyframes sparkle-twinkle {
-  0%, 100% {
-    transform: scale(0.3) rotate(0deg);
-    opacity: 0.3;
-    filter: brightness(0.8) blur(2px);
-  }
-  25% {
-    transform: scale(1) rotate(45deg);
-    opacity: 1;
-    filter: brightness(1.2) blur(0px);
-  }
-  75% {
-    transform: scale(0.6) rotate(-45deg);
-    opacity: 0.6;
-    filter: brightness(1) blur(1px);
-  }
-}
-
-@keyframes sparkle-float {
-  0%, 100% {
-    transform: scale(0.4) translate(0, 0) rotate(0deg);
-    opacity: 0.4;
-  }
-  25% {
-    transform: scale(1.1) translate(-10px, -15px) rotate(90deg);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(0.8) translate(10px, -20px) rotate(180deg);
-    opacity: 0.8;
-  }
-  75% {
-    transform: scale(1) translate(-5px, -10px) rotate(270deg);
-    opacity: 0.9;
-  }
-}
-
-@keyframes sparkle-trail {
-  0% {
-    transform: scale(0) translate(0, 0);
-    opacity: 0;
-    filter: blur(4px);
-  }
-  15% {
-    transform: scale(1.2) translate(-10px, -10px);
-    opacity: 1;
-    filter: blur(0px);
-  }
-  30% {
-    transform: scale(0.8) translate(10px, -20px);
-    opacity: 0.8;
-    filter: blur(1px);
-  }
-  45% {
-    transform: scale(1) translate(-5px, -30px);
-    opacity: 0.6;
-    filter: blur(2px);
-  }
-  60% {
-    transform: scale(0.6) translate(5px, -40px);
-    opacity: 0.4;
-    filter: blur(3px);
-  }
-  100% {
-    transform: scale(0) translate(0, -50px);
-    opacity: 0;
-    filter: blur(4px);
-  }
-}
-
-/* Utility Classes */
-.animate-sparkle-fade {
-  animation: sparkle-fade 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-.animate-sparkle-pulse {
-  animation: sparkle-pulse 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-.animate-sparkle-twinkle {
-  animation: sparkle-twinkle 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-.animate-sparkle-float {
-  animation: sparkle-float 4s infinite cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-.animate-sparkle-trail {
-  animation: sparkle-trail 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-/* Animation Delay Utilities */
-.delay-0 {
-  animation-delay: 0s;
-}
-
-.delay-100 {
-  animation-delay: 0.1s;
-}
-
-.delay-200 {
-  animation-delay: 0.2s;
-}
-
-.delay-300 {
-  animation-delay: 0.3s;
-}
-
-.delay-400 {
-  animation-delay: 0.4s;
-}
-
-/* Optional: Add these classes to your elements for enhanced effects */
-.sparkle-glow {
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
-}
-
-.sparkle-bright {
-  filter: brightness(1.2);
-}
-
-.sparkle-blur {
-  filter: blur(0.5px);
-}
-
-
 
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
+/* Sparkle */
 @keyframes sparkle {
-  0%, 100% {
-    transform: scale(0.4) rotate(0deg);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1) rotate(180deg);
-    opacity: 1;
-  }
+  0%, 100% { opacity: 0.4; transform: scale(0.5) rotate(0deg); }
+  50%      { opacity: 1; transform: scale(1) rotate(180deg); }
 }
 
 .animate-sparkle {
-  animation: sparkle 2s infinite ease-in-out;
+  animation: sparkle 2.8s infinite ease-in-out;
 }
 
-/* Utility Classes */
+/* Soft Glow */
 .hover\:shadow-glow:hover {
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 12px rgba(255, 200, 210, 0.9),
+              0 0 22px rgba(255, 220, 230, 0.7);
 }
+
+/* ----------------------------------------------
+   UTILITY CLASSES
+---------------------------------------------- */
+.sparkle-glow { filter: drop-shadow(0 0 6px rgba(255, 220, 230, 0.7)); }
+.sparkle-soft { filter: brightness(1.15); }
+.sparkle-blur { filter: blur(0.8px); }
