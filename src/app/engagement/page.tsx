@@ -36,13 +36,7 @@ const ENGAGEMENT_IMAGES: EngagementImage[] = [
     description:
       'The exchange of rings symbolizes a commitment that lasts a lifetime.',
   },
-  {
-    src: '/images/engagement/5.webp',
-    alt: 'Engagement 4',
-    caption: 'Surrounded by love.',
-    description:
-      "Loved ones gather to share in the happiness of the couple's engagement.",
-  },
+  
   {
     src: '/images/engagement/1 (6).webp',
     alt: 'Engagement 5',
