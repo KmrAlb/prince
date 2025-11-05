@@ -11,6 +11,8 @@ interface ImageData {
   alt: string;
   caption: string;
   description: string;
+  orientation?: 'vertical' | 'landscape';
+
 }
 
 // Sample birthday images
@@ -63,6 +65,7 @@ const BIRTHDAY_IMAGES: ImageData[] = [
     caption: 'Making memories that last.',
     description:
       'Documenting laughter, play, and precious bonds that make birthdays unforgettable.',
+     orientation: 'vertical',
   },
   {
     src: '/images/birthday/98.webp',
@@ -91,7 +94,10 @@ const BIRTHDAY_IMAGES: ImageData[] = [
     caption: 'A moment worth celebrating.',
     description:
       'From warm hugs to cheerful cheers, every second reflects the joy of the occasion.',
+      orientation: 'vertical',
   },
+  
+
 ];
 
 // Sparkle animation
@@ -174,8 +180,7 @@ const BirthdayPage = () => {
           </div>
         </motion.div>
       </motion.div>
-
-      {/* Gallery Section */}
+{/* Gallery Section */}
       <div className="max-w-6xl mx-auto px-4 py-16">
         {BIRTHDAY_IMAGES.map((image, index) => (
           <motion.div
@@ -198,24 +203,15 @@ const BirthdayPage = () => {
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  layout="responsive"
-                  width={800}
-                  height={600}
-                  className="rounded-none"
+                  width={image.orientation === 'vertical' ? 600 : 800}
+                  height={image.orientation === 'vertical' ? 800 : 600}
+                  className={`rounded-none ${image.orientation === 'vertical' ? 'object-contain' : 'object-cover'}`}
                 />
               </motion.div>
             </div>
-
-            <motion.div
-              className="w-full md:w-1/2 space-y-4"
-              whileHover={{ x: index % 2 === 0 ? 10 : -10 }}
-            >
-              <h2 className="text-2xl font-semibold text-gray-800">
-                {image.caption}
-              </h2>
-              <p className="text-gray-600 leading-relaxed">
-                {image.description}
-              </p>
+            <motion.div className="w-full md:w-1/2 space-y-4" whileHover={{ x: index % 2 === 0 ? 10 : -10 }}>
+              <h2 className="text-2xl font-semibold text-gray-800">{image.caption}</h2>
+              <p className="text-gray-600 leading-relaxed">{image.description}</p>
             </motion.div>
           </motion.div>
         ))}
@@ -235,34 +231,22 @@ const BirthdayPage = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="relative max-w-4xl w-full"
+              className="relative w-full max-w-3xl max-h-[90vh] flex justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                layout="responsive"
-                width={800}
-                height={600}
-                className="rounded-none shadow-2xl"
+                width={selectedImage.orientation === 'vertical' ? 600 : 800}
+                height={selectedImage.orientation === 'vertical' ? 800 : 600}
+                className={`rounded-none shadow-2xl ${selectedImage.orientation === 'vertical' ? 'object-contain' : 'object-cover'}`}
               />
-
               <button
                 onClick={() => setSelectedImage(null)}
                 className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </motion.div>

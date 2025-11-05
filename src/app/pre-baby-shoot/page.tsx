@@ -12,6 +12,8 @@ interface PreBabyImage {
   alt: string;
   caption: string;
   description: string;
+    orientation?: 'vertical' | 'landscape';
+
 }
 
 const PREBABY_IMAGES: PreBabyImage[] = [
@@ -87,6 +89,8 @@ const PREBABY_IMAGES: PreBabyImage[] = [
     alt: '2-Year Toddler Photoshoot',
     caption: 'Two years of growing wonder.',
     description: 'Capturing the energetic, curious, and heartwarming moments of toddlerhood.',
+        orientation: 'vertical',
+
   },
   {
     src: '/images/prebaby/104.webp',
@@ -105,6 +109,8 @@ const PREBABY_IMAGES: PreBabyImage[] = [
     alt: '5-Year Kids Photoshoot',
     caption: 'Five and full of dreams.',
     description: 'Celebrating personality, imagination, and childhood magic at five years old.',
+        orientation: 'vertical',
+
   },
 
 ];
@@ -204,100 +210,81 @@ const PreBabyPage = () => {
       </motion.div>
 
       {/* Gallery Section */}
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        {PREBABY_IMAGES.map((image, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className={`flex flex-col md:flex-row ${
-              index % 2 === 0 ? '' : 'md:flex-row-reverse'
-            } items-center gap-8 mb-24 relative`}
-          >
-            <div className="w-full md:w-1/2 relative group">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="relative overflow-hidden shadow-xl cursor-pointer"
-                onClick={() => setSelectedImage(image)}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  layout="responsive" // Use responsive layout for better performance
-                  width={500} // Specify width according to your design
-                  height={300} // Specify height according to your design
-                  className="object-cover rounded-none"
-                />
-              </motion.div>
-            </div>
-            <motion.div
-              className="w-full md:w-1/2 space-y-4"
-              whileHover={{ x: index % 2 === 0 ? 10 : -10 }}
-            >
-              <h2 className="text-2xl font-semibold text-gray-800">{image.caption}</h2>
-              <p className="text-gray-600 leading-relaxed">{image.description}</p>
-            </motion.div>
-          </motion.div>
-        ))}
-      </div>
 
-      {/* Modal */}
-      {/* Modal */}
-      
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            initial={{ opacity :0 }}
-            animate={{ opacity :1}}
-            exit={{opacity :0}}
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.div
-              initial={{opacity :0 , scale :0.9}}
-              animate={{opacity :1 , scale :1}}
-              exit={{opacity :0 , scale :0.9}}
-              className="relative max-w-4xl w-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Replace img with Image in modal */}
-              <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                layout="responsive" // Use responsive layout for better performance
-                width={800} // Specify width for optimization
-                height={600} // Specify height for optimization
-                className="rounded-none shadow-2xl"
-              />
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+            <div className="max-w-6xl mx-auto px-4 py-16">
+              {PREBABY_IMAGES.map((image, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.6 }}
+                  className={`flex flex-col md:flex-row ${
+                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  } items-center gap-8 mb-24 relative`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Footer */}
-    </div>
-);
-};
+                  <div className="w-full md:w-1/2 relative group">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                      className="relative overflow-hidden shadow-xl cursor-pointer"
+                      onClick={() => setSelectedImage(image)}
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        width={image.orientation === 'vertical' ? 600 : 800}
+                        height={image.orientation === 'vertical' ? 800 : 600}
+                        className={`rounded-none ${image.orientation === 'vertical' ? 'object-contain' : 'object-cover'}`}
+                      />
+                    </motion.div>
+                  </div>
+                  <motion.div className="w-full md:w-1/2 space-y-4" whileHover={{ x: index % 2 === 0 ? 10 : -10 }}>
+                    <h2 className="text-2xl font-semibold text-gray-800">{image.caption}</h2>
+                    <p className="text-gray-600 leading-relaxed">{image.description}</p>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+      
+            {/* Modal */}
+            <AnimatePresence>
+              {selectedImage && (
+                <motion.div
+                  className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setSelectedImage(null)}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    className="relative w-full max-w-3xl max-h-[90vh] flex justify-center"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Image
+                      src={selectedImage.src}
+                      alt={selectedImage.alt}
+                      width={selectedImage.orientation === 'vertical' ? 600 : 800}
+                      height={selectedImage.orientation === 'vertical' ? 800 : 600}
+                      className={`rounded-none shadow-2xl ${selectedImage.orientation === 'vertical' ? 'object-contain' : 'object-cover'}`}
+                    />
+                    <button
+                      onClick={() => setSelectedImage(null)}
+                      className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      };
 
 export default PreBabyPage;
