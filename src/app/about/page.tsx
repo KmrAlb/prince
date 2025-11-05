@@ -30,7 +30,7 @@ export default function AboutPage() {
       const data = await res.json();
 
       if (res.ok) {
-        setFormStatus("✅ Message sent successfully! We'll get back to you soon.");
+        setFormStatus("✅ Message sent successfully! We&apos;ll get back to you soon.");
         formElement.reset();
         setTimeout(() => setFormStatus(""), 5000);
       } else {
@@ -48,17 +48,9 @@ export default function AboutPage() {
 
       {/* HEADER VIDEO */}
       <div className="relative shadow-xl">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-72 object-cover"
-        >
+        <video autoPlay muted loop playsInline className="w-full h-72 object-cover">
           <source src="/aboutus/logo.webm" type="video/webm" />
         </video>
-
-        
       </div>
 
       {/* ABOUT SECTION */}
@@ -85,7 +77,7 @@ export default function AboutPage() {
           </p>
 
           <p>
-            We don't just click photos—we craft stories filled with emotions, 
+            We don&apos;t just click photos—we craft stories filled with emotions, 
             laughter, and timeless memories. Our films focus on genuine 
             storytelling, not just rituals.
           </p>
@@ -123,10 +115,7 @@ export default function AboutPage() {
 
           <p>
             <strong>Email:</strong>{" "}
-            <a
-              href="mailto:enquiriesvivaahtales@gmail.com"
-              className="text-purple-700 underline hover:text-purple-800 font-semibold"
-            >
+            <a href="mailto:enquiriesvivaahtales@gmail.com" className="text-purple-700 underline hover:text-purple-800 font-semibold">
               enquiriesvivaahtales@gmail.com
             </a>
           </p>
