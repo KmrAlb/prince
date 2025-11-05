@@ -15,90 +15,97 @@ interface PreBabyImage {
 }
 
 const PREBABY_IMAGES: PreBabyImage[] = [
+
   {
     src: '/images/prebaby/1 (6).webp',
     alt: 'Pre-Baby Photoshoot 1',
     caption: 'Tiny toes, big beginnings.',
-    description:
-      'Celebrating the early days of life with simple and heartfelt moments.',
+    description: 'Celebrating the early days of life with simple and heartfelt moments.',
   },
   {
     src: '/images/prebaby/1 (4).webp',
     alt: 'Pre-Baby Photoshoot 2',
     caption: 'Joy in every little moment.',
-    description:
-      'Capturing genuine expressions and milestones as your little one grows.',
+    description: 'Capturing genuine expressions and milestones as your little one grows.',
   },
   {
     src: '/images/prebaby/1 (8).webp',
     alt: 'Pre-Baby Photoshoot 3',
     caption: 'First smiles, unforgettable memories.',
-    description:
-      "Documenting the unique charm of your baby's first year with care and attention.",
+    description: "Documenting the unique charm of your baby's first year with care and attention.",
   },
   {
     src: '/images/prebaby/1 (2).webp',
     alt: 'Pre-Baby Photoshoot 4',
     caption: 'Cherishing the moments that matter.',
-    description:
-      'From their first laugh to their tiny steps, we help you treasure these milestones forever.',
+    description: 'From their first laugh to their tiny steps, we help you treasure these milestones forever.',
   },
   {
     src: '/images/prebaby/1 (1).webp',
     alt: 'Pre-Baby Photoshoot 5',
     caption: 'Big love for little ones.',
-    description:
-      "Creating timeless portraits that celebrate your child's first year.",
+    description: "Creating timeless portraits that celebrate your child's first year.",
+  },
+  {
+    src: '/images/prebaby/1 (3).webp',
+    alt: 'Pre-Baby Photoshoot 6',
+    caption: 'Moments to hold onto.',
+    description: 'Capturing early childhood moments with warmth and authenticity.',
+  },
+  {
+    src: '/images/prebaby/41.webp',
+    alt: '4-Month Baby Photoshoot',
+    caption: 'Four months of pure wonder.',
+    description: 'Capturing growing curiosity, brighter smiles, and beautiful early milestones.',
   },
   {
     src: '/images/prebaby/1 (5).webp',
-    alt: 'Pre-Baby Photoshoot 6',
-    caption: 'Moments to hold onto.',
-    description:
-      'Capturing early childhood moments with warmth and authenticity.',
+    alt: '4-Month Baby Photoshoot 2',
+    caption: 'Little giggles, big smiles.',
+    description: 'Another glimpse of four-month milestones full of joy and curiosity.',
   },
   {
-  src: '/images/prebaby/41.webp',
-  alt: '4-Month Baby Photoshoot',
-  caption: 'Four months of pure wonder.',
-  description:
-    'Capturing growing curiosity, brighter smiles, and beautiful early milestones.',
-},
-{
-  src: '/images/prebaby/5.webp',
-  alt: '5-Month Baby Photoshoot',
-  caption: 'Little hands, big happiness.',
-  description:
-    'Celebrating the fifth month with adorable expressions and playful personality.',
-},
-{
-  src: '/images/prebaby/6month (1).webp',
-  alt: '6-Month Baby Photoshoot',
-  caption: 'Halfway to one, full of love.',
-  description:
-    'Documenting the exciting half-year mark with warm and lively portraits.',
-},
-{
-  src: '/images/prebaby/11.webp',
-  alt: '1-Year Birthday Photoshoot',
-  caption: 'One year of joy and giggles.',
-  description:
-    'A special milestone filled with laughter, innocence, and big first adventures.',
-},
-{
-  src: '/images/prebaby/101.webp',
-  alt: '2-Year Toddler Photoshoot',
-  caption: 'Two years of growing wonder.',
-  description:
-    'Capturing the energetic, curious, and heartwarming moments of toddlerhood.',
-},
-{
-  src: '/images/prebaby/55.webp',
-  alt: '5-Year Kids Photoshoot',
-  caption: 'Five and full of dreams.',
-  description:
-    'Celebrating personality, imagination, and childhood magic at five years old.',
-},
+    src: '/images/prebaby/5.webp',
+    alt: '5-Month Baby Photoshoot',
+    caption: 'Little hands, big happiness.',
+    description: 'Celebrating the fifth month with adorable expressions and playful personality.',
+  },
+  {
+    src: '/images/prebaby/102.webp',
+    alt: '6-Month Baby Photoshoot',
+    caption: 'Halfway to one, full of love.',
+    description: 'Documenting the exciting half-year mark with warm and lively portraits.',
+  },
+  {
+    src: '/images/prebaby/11.webp',
+    alt: '1-Year Birthday Photoshoot',
+    caption: 'One year of joy and giggles.',
+    description: 'A special milestone filled with laughter, innocence, and big first adventures.',
+  },
+  {
+    src: '/images/prebaby/101.webp',
+    alt: '2-Year Toddler Photoshoot',
+    caption: 'Two years of growing wonder.',
+    description: 'Capturing the energetic, curious, and heartwarming moments of toddlerhood.',
+  },
+  {
+    src: '/images/prebaby/104.webp',
+    alt: '2-Year Toddler Photoshoot 3',
+    caption: 'Tiny adventurer.',
+    description: 'Exploring the world one step at a time with curiosity and joy.',
+  },
+  {
+    src: '/images/prebaby/103.webp',
+    alt: '2-Year Toddler Photoshoot 4',
+    caption: 'Little explorer.',
+    description: 'Capturing their playful spirit and heartwarming antics at two years old.',
+  },
+  {
+    src: '/images/prebaby/55.webp',
+    alt: '5-Year Kids Photoshoot',
+    caption: 'Five and full of dreams.',
+    description: 'Celebrating personality, imagination, and childhood magic at five years old.',
+  },
 
 ];
 
