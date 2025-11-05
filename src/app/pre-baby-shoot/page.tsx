@@ -43,13 +43,13 @@ const PREBABY_IMAGES: PreBabyImage[] = [
     description: 'From their first laugh to their tiny steps, we help you treasure these milestones forever.',
   },
   {
-    src: '/images/prebaby/1 (1).webp',
+    src: '/images/prebaby/1 (3).webp',
     alt: 'Pre-Baby Photoshoot 5',
     caption: 'Big love for little ones.',
     description: "Creating timeless portraits that celebrate your child's first year.",
   },
   {
-    src: '/images/prebaby/1 (3).webp',
+    src: '/images/prebaby/1 (1).webp',
     alt: 'Pre-Baby Photoshoot 6',
     caption: 'Moments to hold onto.',
     description: 'Capturing early childhood moments with warmth and authenticity.',
