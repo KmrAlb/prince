@@ -13,6 +13,8 @@ export const NAVIGATION_ITEMS = [
   { name: 'Birthday', href: '/birthday' },
   { name: 'Baby-Shower', href: '/baby-shower' },
   { name: 'About', href: '/about' },
+  { name: 'Reviews', href: '/review' },
+
 
 
 ];
