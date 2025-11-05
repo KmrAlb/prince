@@ -64,7 +64,7 @@ export default function AboutPage() {
           <p>
             <strong className="text-purple-700">Vivaah Tales</strong>, a unit of 
             Nicomatic Creation Photography, was founded on January 16, 2015, by 
-            three friends—Somraj, Raja, and Ritesh. Born from passion and 
+            three friends—Somraj Chakraborty, Gourav Sen , Ritesh Rajput Born from passion and 
             creativity, our journey began with a Nikon camera and a dream.
           </p>
 
@@ -103,7 +103,7 @@ export default function AboutPage() {
         <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 p-8 rounded-2xl shadow-lg space-y-4">
           <p>
             <strong>Office:</strong><br />
-            Vivaah Tales, 1st Floor, Second Line, Benachity (Near Haji Briyani), Durgapur 713213
+            Vivaah Tales, 1st Floor, Secon Line, Benachity (Near Haji Briyani), Durgapur 713213
           </p>
 
           <p>
