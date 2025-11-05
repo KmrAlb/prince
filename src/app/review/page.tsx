@@ -26,7 +26,7 @@ const reviews: Review[] = [
     pfp: "/images/reviews/2.jpg",
   },
   {
-    name: "ROHIT'S OFFICIAL VLOGS",
+    name: "ROHIT'S OFFICIAL VLOG'S",
     text: "Amazing Experience and Stunning Photos! Working with Vivaah Tales Film And Photo was an absolute delight from start to finish. Their professionalism, creativity, and attention to detail truly set them apart. They have a fantastic ability to make you feel comfortable in front of the camera, resulting in natural and authentic photos. The final images were breathtaking - every shot captured the emotions and essence of the moment beautifully. Whether you're looking for portraits, event photography, or creative concepts, I highly recommend Vivaah Tales. Their passion for their craft shines through in every frame! I can't wait to book with them again. Thank you for an unforgettable experience!",
     pfp: "/images/reviews/3.jpg",
   },
