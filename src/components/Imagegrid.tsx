@@ -12,6 +12,7 @@ const latestWorksData = [
   { name: 'Wedding', href: '/wedding' },
   { name: 'Birthday', href: '/birthday' },
   { name: 'Baby-Shower', href: '/baby-shower' },
+  { name: 'Films', href: '/films'}
 
 ];
 

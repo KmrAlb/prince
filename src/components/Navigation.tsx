@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { X } from 'lucide-react';
 
 export const NAVIGATION_ITEMS = [
+    { name: 'About', href: '/about' },
   { name: 'Maternity', href: '/maternity' },
   { name: 'Pre-Baby Shoot', href: '/pre-baby-shoot' },
   { name: 'Engagement', href: '/engagement' },
@@ -12,7 +13,7 @@ export const NAVIGATION_ITEMS = [
   { name: 'Wedding', href: '/wedding' },
   { name: 'Birthday', href: '/birthday' },
   { name: 'Baby-Shower', href: '/baby-shower' },
-  { name: 'About', href: '/about' },
+  { name: 'Films', href: '/films' },
   { name: 'Reviews', href: '/review' },
 
 

@@ -14,7 +14,7 @@ interface MaternityImage {
 
 const MATERNITY_IMAGES: MaternityImage[] = [
   {
-    src: '/images/maternity/1 (2).webp',
+    src: '/images/maternity/maternity.webp',
     alt: 'Maternity Photo 1',
     caption: 'A new life begins, cradled in love.',
     description: 'Capturing the gentle moments of anticipation, where every touch tells a story of unconditional love and dreams yet to unfold.'

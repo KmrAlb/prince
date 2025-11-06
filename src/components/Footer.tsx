@@ -1,4 +1,4 @@
-import { Mail, Phone, Instagram, Facebook, Youtube } from 'lucide-react'; // Import Youtube icon
+import { Mail, Phone, Instagram, Facebook, Youtube, MapPin } from 'lucide-react'; // Import MapPin for location
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
           <div>
             <h3 className="text-2xl font-semibold tracking-wide mb-4">Vivaah Tales</h3>
             <p className="text-gray-400 leading-relaxed">
-            Preserving your most cherished moments with unmatched creativity and heartfelt passion, crafting timeless memories that last a lifetime
+              Preserving your most cherished moments with unmatched creativity and heartfelt passion, crafting timeless memories that last a lifetime
             </p>
           </div>
 
@@ -31,6 +31,10 @@ const Footer = () => {
                 <Mail size={20} />
                 <span>enquiriesvivaahtales@gmail.com</span>
               </a>
+              <div className="flex items-start space-x-3 ml-1 mt-1 text-gray-400">
+                <MapPin size={30} className="mt-1" />
+                <span>Vivaah Tales, 1st Floor, Secon Line, Benachity (Near Haji Briyani), Durgapur 713213</span>
+              </div>
             </div>
           </div>
 
@@ -54,10 +58,10 @@ const Footer = () => {
               </a>
               <a
                 href="https://www.youtube.com/@Vivaahtales/featured"
-                aria-label="YouTube" // Add aria-label for accessibility
+                aria-label="YouTube"
                 className="text-gray-400 hover:text-white transition"
               >
-                <Youtube size={28} /> {/* Add YouTube icon here */}
+                <Youtube size={28} />
               </a>
             </div>
           </div>
