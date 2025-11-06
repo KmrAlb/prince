@@ -24,13 +24,34 @@ export default function FilmsPage() {
     if (!id) return "";
     return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
   }
+  
 
+const prewedding: MediaItem[] = [
+{
+thumb: "/images/films/81.jpg",
+source: "https://youtu.be/WOY4PCc4Hxo?si=z8NuxUdG4m5JEgwp",
+title: "Biswoprotim & Swarupa Prewedding",
+desc: "Prewedding Teaser — 04:26",
+},
+{
+thumb: "/images/films/82.jpg",
+source: "https://youtu.be/lMf7cun7ZeA?si=FGnWqWnING1Ujnns",
+title: "Kaustav & Rima Prewedding",
+desc: "Prewedding Teaser — 04:16",
+},
+{
+      thumb: "/images/films/4.jpg",
+      source: "https://youtu.be/aD--KStN1ZA?si=Pdgry67riqWDly7G",
+      title: "Avijit & Aradhana ",
+      desc: "Full wedding highlight — 05:30",
+    },
+];
   const teasers: MediaItem[] = [
     {
       thumb: "/images/films/1.jpg",
       source: "https://youtu.be/AeMf41iH2bI?si=BySXAs04gjGT5qngs",
       title: "Saima & Rameez Teaser",
-      desc: "Wedding Teaser — 2:59",
+      desc: "Wedding Teaser — 02:59",
     },
     {
       thumb: "/images/films/2.jpg",
@@ -48,11 +69,12 @@ export default function FilmsPage() {
 
   const weddingVideos: MediaItem[] = [
     {
-      thumb: "/images/films/4.jpg",
-      source: "https://youtu.be/miZfK_rYJlQ?si=Nq5S1MCiltpKhroI",
-      title: "Avijit & Aradhana ",
-      desc: "Full wedding highlight — 5:30",
+      thumb: "/images/films/83.jpg",
+      source: "https://youtu.be/YFUe10p1B0o?feature=shared",
+      title: "Subham & Arpita ",
+      desc: "Full wedding highlight — 03:06",
     },
+    
     {
       thumb: "/images/films/5.jpg",
       source: "https://youtu.be/YFUe10p1B0o?feature=shared",
@@ -205,6 +227,7 @@ export default function FilmsPage() {
       <header className="mb-12 text-center w-full px-4">
         {/* Add your header content here */}
       </header>
+      <Section title="Prewedding" subtitle="Romantic moments before the big day captured beautifully" items={prewedding} />
 
       <Section 
         title="Wedding Teasers" 
