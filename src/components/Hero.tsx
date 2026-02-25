@@ -1,61 +1,161 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+
+interface Review {
+  name: string;
+  text: string;
+  pfp?: string;
+}
+
+const reviews: Review[] = [
+  {
+    name: "Antara Pathak",
+    text: "Cannot thank you enough for capturing our moments so beautifully.",
+    pfp: "/images/reviews/0.jpg",
+  },
+  {
+    name: "Ashish Jha",
+    text: "Outstanding photography and editing skills. Highly recommended.",
+    pfp: "/images/reviews/1.jpg",
+  },
+  {
+    name: "Rahul Kaushal",
+    text: "Highly talented and professional with advanced equipment.",
+    pfp: "/images/reviews/2.jpg",
+  },
+  {
+    name: "Rubi Nair",
+    text: "Best experience ever. Loving their wedding photography work.",
+    pfp: "/images/reviews/4.jpg",
+  },
+];
 
 const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [current, setCurrent] = useState(0);
 
-  // Detect if the screen size is mobile
+  // Detect screen size
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Mobile threshold at 768px
+      setIsMobile(window.innerWidth <= 768);
     };
-
-    handleResize(); // Check initially
-    window.addEventListener('resize', handleResize); // Add resize listener
-
-    return () => {
-      window.removeEventListener('resize', handleResize); // Cleanup listener
-    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Preload hero image
   useEffect(() => {
-    const imagePreload = new window.Image();
-    imagePreload.src = isMobile ? '/images/hero-mobile.jpg' : '/images/hero1.jpg'; // Preload appropriate image
-    imagePreload.onload = () => {
-      setImageLoaded(true);
-    };
+    const img = new window.Image();
+    img.src = isMobile
+      ? "/images/wedding/0.webp"
+      : "/images/wedding/1.webp";
+    img.onload = () => setImageLoaded(true);
   }, [isMobile]);
 
+  // Review rotation (cinematic pace)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % reviews.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="relative h-[90vh] md:h-[90vh] overflow-hidden bg-black">
-      <Image
-        src={isMobile ? '/images/wedding/0.webp' : '/images/wedding/1.webp'} // Use mobile image for small screens
-        alt="Wedding Photography"
-        fill
-        priority
-        sizes="100vw"
-        className={`opacity-80 transition-opacity duration-1000 ease-in-out ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-        style={{ objectFit: 'cover' }}
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-40">
-        <div className="h-full max-w-4xl mx-auto px-3 flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1
-              className="text-4xl md:text-6xl font-bold mb-4 opacity-0 transition-all duration-700 ease-out transform -translate-y-10 animate-slide-up"
-            >
-              Cherish your moments Relive the magic
+    <>
+      {/* HERO SECTION */}
+      <section className="relative h-[90vh] overflow-hidden bg-black">
+        <Image
+          src={isMobile ? "/images/wedding/0.webp" : "/images/wedding/1.webp"}
+          alt="Wedding Photography"
+          fill
+          priority
+          sizes="100vw"
+          className={`object-cover transition-opacity duration-1000 ${
+            imageLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        />
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5 }}
+            className="text-center text-white px-6"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-wide">
+              Cherish your moments
             </h1>
-            <p className="text-xl md:text-2xl opacity-0 transition-all duration-700 ease-out transform -translate-y-10 animate-slide-up delay-200">
+            <p className="text-xl md:text-2xl tracking-widest">
               WEDDING FILM & PHOTO
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* REVIEWS SECTION */}
+      <section className="relative bg-gradient-to-b from-white to-purple-50 py-32 overflow-hidden">
+        <h2 className="text-4xl text-center mb-20 text-purple-800 font-semibold">
+          What Our Clients Say
+        </h2>
+
+        <div className="relative h-[320px] max-w-2xl mx-auto flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{
+                opacity: 0,
+                y: 40,
+                filter: "blur(10px)",
+                scale: 0.98,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                y: -40,
+                filter: "blur(8px)",
+                scale: 0.98,
+              }}
+              transition={{
+                duration: 1.4,
+                ease: [0.65, 0.05, 0.36, 1],
+              }}
+              className="absolute w-full bg-white/80 backdrop-blur-xl rounded-3xl p-12 shadow-xl border border-purple-100"
+            >
+              <div className="flex justify-center mb-6">
+                {reviews[current].pfp && (
+                  <Image
+                    src={reviews[current].pfp!}
+                    alt={reviews[current].name}
+                    width={90}
+                    height={90}
+                    className="rounded-full border-4 border-purple-200 shadow-md"
+                  />
+                )}
+              </div>
+
+              <p className="text-gray-700 italic text-lg text-center leading-relaxed mb-6">
+                “{reviews[current].text}”
+              </p>
+
+              <h3 className="text-center font-semibold text-purple-700">
+                — {reviews[current].name}
+              </h3>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </section>
+    </>
   );
 };
 
