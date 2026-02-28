@@ -3,6 +3,10 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { Cormorant_Garamond, Lora } from 'next/font/google';
+
+const cormorant = Cormorant_Garamond({ subsets: ['latin'], weight: ['400','500','600'] });
+const lora = Lora({ subsets: ['latin'], weight: ['400','500','600'] });
 
 const inter = Inter({ subsets: ['latin'] });
 

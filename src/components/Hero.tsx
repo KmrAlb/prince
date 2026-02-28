@@ -31,6 +31,21 @@ const reviews: Review[] = [
     text: "Best experience ever. Loving their wedding photography work.",
     pfp: "/images/reviews/4.jpg",
   },
+  {
+    name: "Sofia Khatun",
+    text: "Thank you so muchMy special day ko Best karne ke liye..apnephoto Shoot se or best kar diye thank you aap ki pori Tim ko.",
+    pfp: "/images/reviews/9.jpg",
+  },
+  {
+    name: "Rajesh Shaw",
+    text: "Great work and Good Coordination, Well Cooperative by your Team, and great Skill shown by You and your team",
+    pfp: "/images/reviews/8.jpg",
+  },
+  {
+    name: "Chiranjit Dey",
+    text: "We had the absolute pleasure of choosing Vivaah Tales for our wedding celebrations on 15th December 2025 and reception.",
+    pfp: "/images/reviews/7.jpg",
+  },
 ];
 
 const Hero = () => {
