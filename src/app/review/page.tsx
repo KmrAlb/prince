@@ -2,17 +2,18 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface Review {
   name: string;
   text: string;
-  pfp?: string; // Path to profile picture
+  pfp?: string;
 }
 
 const reviews: Review[] = [
   {
     name: "Antara Pathak",
-    text: "Our all time favourite Mr. Prince Garwar is the best in town. Cannot thank you enough for capturing our moments so beautifully..♥️♥️♥️",
+    text: "Our all time favourite Mr. Prince Garwar is the best in town. Cannot thank you enough for capturing our moments so beautifully.",
     pfp: "/images/reviews/0.jpg",
   },
   {
@@ -22,12 +23,12 @@ const reviews: Review[] = [
   },
   {
     name: "Rahul Kaushal",
-    text: "I loved their work they are highly talented and professional with all the advanced equipments..I would suggest if anyone is looking for their wedding photography then Vivaah Tales is the right place..",
+    text: "I loved their work — highly talented and professional with all the advanced equipment. I would suggest if anyone is looking for wedding photography, Vivaah Tales is the right place.",
     pfp: "/images/reviews/2.jpg",
   },
   {
-    name: "ROHIT'S OFFICIAL VLOG'S",
-    text: "Amazing Experience and Stunning Photos! Working with Vivaah Tales Film And Photo was an absolute delight from start to finish. Their professionalism, creativity, and attention to detail truly set them apart. They have a fantastic ability to make you feel comfortable in front of the camera, resulting in natural and authentic photos. The final images were breathtaking - every shot captured the emotions and essence of the moment beautifully. Whether you're looking for portraits, event photography, or creative concepts, I highly recommend Vivaah Tales. Their passion for their craft shines through in every frame! I can't wait to book with them again. Thank you for an unforgettable experience!",
+    name: "Rohit's Official Vlogs",
+    text: "Amazing experience and stunning photos! Their professionalism, creativity, and attention to detail truly set them apart. Every shot captured the emotions and essence of the moment beautifully. Their passion for their craft shines through in every frame.",
     pfp: "/images/reviews/5.jpg",
   },
   {
@@ -37,17 +38,17 @@ const reviews: Review[] = [
   },
   {
     name: "Ajmad Ali",
-    text: "Choosing Vivaah Tales for my engagement was the best decision... Coz these guys did a fabulous job.",
+    text: "Choosing Vivaah Tales for my engagement was the best decision — these guys did a fabulous job.",
     pfp: "/images/reviews/3.jpg",
   },
   {
     name: "Sofia Khatun",
-    text: "Thank you so muchMy special day ko Best karne ke liye..apnephoto Shoot se or best kar diye thank you aap ki pori Tim ko.",
+    text: "Thank you so much — my special day ko best karne ke liye. Apne photo shoot se aur best kar diye, thank you aap ki poori team ko.",
     pfp: "/images/reviews/9.jpg",
   },
   {
     name: "Rajesh Shaw",
-    text: "Great work and Good Coordination, Well Cooperative by your Team, and great Skill shown by You and your team",
+    text: "Great work and good coordination. Well cooperative by your team, and great skill shown by you and your team.",
     pfp: "/images/reviews/8.jpg",
   },
   {
@@ -59,45 +60,128 @@ const reviews: Review[] = [
 
 export default function ReviewsPage() {
   return (
-    <div className="min-h-screen bg-purple-50 py-16 px-6">
-      <h1 className="text-4xl md:text-5xl font-serif text-center text-purple-800 mb-16 tracking-wide drop-shadow-sm">
-        What Our Clients Say
-      </h1>
+    <div
+      className="min-h-screen py-24 px-6"
+      style={{ background: "#faf7f2" }}
+    >
+      {/* Subtle vignette */}
+      <div
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 50%, rgba(230,218,200,0.3) 100%)",
+        }}
+      />
 
-      <div className="max-w-6xl mx-auto grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+      {/* Heading */}
+      <div className="relative z-10 text-center mb-20">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+          className="text-xs uppercase tracking-[0.35em] mb-3 font-light"
+          style={{ color: "#b89a7a" }}
+        >
+          From our couples
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.65, 0.05, 0.36, 1] }}
+          className="text-4xl md:text-5xl font-serif"
+          style={{ color: "#3a2c1e" }}
+        >
+          What Our Clients Say
+        </motion.h1>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.9, delay: 0.25 }}
+          className="mx-auto mt-5 h-px w-16"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, #c9a882, transparent)",
+          }}
+        />
+      </div>
+
+      {/* Grid */}
+      <div className="relative z-10 max-w-6xl mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {reviews.map((review, index) => (
-          <div
+          <motion.div
             key={index}
-            className="bg-white rounded-3xl shadow-xl p-6 flex flex-col space-y-4 border-t-4 border-purple-600 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{
+              duration: 0.85,
+              delay: (index % 3) * 0.1,
+              ease: [0.65, 0.05, 0.36, 1],
+            }}
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                {review.pfp && (
+            <div
+              className="h-full flex flex-col p-7 rounded-2xl"
+              style={{
+                background: "#fff9f3",
+                border: "1px solid rgba(210,185,155,0.35)",
+                boxShadow: "0 4px 28px rgba(160,120,80,0.07)",
+              }}
+            >
+              {/* Top row: avatar + name + google logo */}
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  {review.pfp && (
+                    <div
+                      className="rounded-full overflow-hidden flex-shrink-0"
+                      style={{
+                        width: 52,
+                        height: 52,
+                        border: "1.5px solid #ddc9b0",
+                      }}
+                    >
+                      <Image
+                        src={review.pfp}
+                        alt={review.name}
+                        width={52}
+                        height={52}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                  )}
+                  <span
+                    className="text-sm font-medium"
+                    style={{ color: "#5a4030" }}
+                  >
+                    {review.name}
+                  </span>
+                </div>
+
+                {/* Google logo */}
+                <div className="w-5 h-5 relative flex-shrink-0 opacity-60">
                   <Image
-                    src={review.pfp}
-                    alt={review.name}
-                    width={60}
-                    height={60}
-                    className="rounded-full object-cover border-2 border-purple-300 shadow-sm"
+                    src="/google.jpg"
+                    alt="Google"
+                    fill
+                    className="object-contain"
                   />
-                )}
-                <h3 className="text-lg font-semibold text-purple-700">{review.name}</h3>
+                </div>
               </div>
 
-              <div className="w-6 h-6 relative">
-                <Image
-                  src="/google.jpg" // Google logo in /public folder
-                  alt="Google"
-                  fill
-                  className="object-contain"
-                />
-              </div>
+              {/* Divider */}
+              <div
+                className="mb-5 h-px w-full"
+                style={{ background: "rgba(210,185,155,0.3)" }}
+              />
+
+              {/* Review text */}
+              <p
+                className="text-sm leading-relaxed font-serif italic flex-1"
+                style={{ color: "#7a5c40" }}
+              >
+                &ldquo;{review.text}&rdquo;
+              </p>
             </div>
-
-            <p className="text-gray-700 leading-relaxed text-sm md:text-base">
-              {review.text}
-            </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
