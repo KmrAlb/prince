@@ -91,7 +91,7 @@ desc: "Prewedding Teaser — 04:16",
 
   const reels: MediaItem[] = [
     {
-      thumb: "/images/films/11.jpg",
+      thumb: "/images/films/11.webp",
       source: "https://www.instagram.com/vivaahtales_/",
       title: "Reel: suvo suvo",
       desc: "IG Reel",
