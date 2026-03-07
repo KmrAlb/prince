@@ -18,43 +18,95 @@ export const NAVIGATION_ITEMS = [
   { name: 'Reviews', href: '/review' },
 ];
 
-// Generates a soft, airy chime using the Web Audio API — no audio file needed
-const playChime = () => {
+/**
+ * Camera shutter + film advance sound.
+ * Three micro-layers, all very quiet (max gain ~0.06):
+ *   1. Shutter click  — sharp filtered noise burst (~15ms), the "clack"
+ *   2. Mirror slap    — low thud sine sweep (~30ms), body vibration
+ *   3. Film advance   — short filtered noise rattle (~80ms), mechanical roll
+ */
+const playShutter = () => {
   try {
-    const AudioContext = window.AudioContext || (window as unknown as { webkitAudioContext: typeof window.AudioContext }).webkitAudioContext;
+    const AudioContext =
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof window.AudioContext })
+        .webkitAudioContext;
     const ctx = new AudioContext();
+    const now = ctx.currentTime;
 
-    // Two sine waves slightly detuned for a warm, breathy tone
-    const frequencies = [880, 1108]; // A5 + C#6 — a gentle major third
+    const makeNoise = (durationSec: number) => {
+      const len = Math.floor(ctx.sampleRate * durationSec);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+      return buf;
+    };
 
-    frequencies.forEach((freq, i) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
+    // ── 1. Shutter click — sharp high-mid crack ───────────────────────────
+    const clickSrc = ctx.createBufferSource();
+    clickSrc.buffer = makeNoise(0.04);
 
-      osc.connect(gain);
-      gain.connect(ctx.destination);
+    const clickFilter = ctx.createBiquadFilter();
+    clickFilter.type = 'bandpass';
+    clickFilter.frequency.setValueAtTime(4500, now);
+    clickFilter.Q.setValueAtTime(1.2, now);
 
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+    const clickGain = ctx.createGain();
+    clickGain.gain.setValueAtTime(0, now);
+    clickGain.gain.linearRampToValueAtTime(0.055, now + 0.003);
+    clickGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.04);
 
-      // Very soft — barely audible, just a whisper
-      gain.gain.setValueAtTime(0, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.06, ctx.currentTime + 0.01 + i * 0.04);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.6 + i * 0.1);
+    clickSrc.connect(clickFilter);
+    clickFilter.connect(clickGain);
+    clickGain.connect(ctx.destination);
+    clickSrc.start(now);
+    clickSrc.stop(now + 0.05);
 
-      osc.start(ctx.currentTime + i * 0.04);
-      osc.stop(ctx.currentTime + 0.8);
+    // ── 2. Mirror slap — low body thud ───────────────────────────────────
+    const thudOsc = ctx.createOscillator();
+    thudOsc.type = 'sine';
+    thudOsc.frequency.setValueAtTime(120, now);
+    thudOsc.frequency.exponentialRampToValueAtTime(55, now + 0.035);
 
-      osc.onended = () => {
-        gain.disconnect();
-        osc.disconnect();
-      };
-    });
+    const thudGain = ctx.createGain();
+    thudGain.gain.setValueAtTime(0, now);
+    thudGain.gain.linearRampToValueAtTime(0.05, now + 0.004);
+    thudGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
 
-    // Close context after sound finishes to free memory
-    setTimeout(() => ctx.close(), 1000);
+    thudOsc.connect(thudGain);
+    thudGain.connect(ctx.destination);
+    thudOsc.start(now);
+    thudOsc.stop(now + 0.05);
+
+    // ── 3. Film advance rattle — mid noise tail ───────────────────────────
+    const filmSrc = ctx.createBufferSource();
+    filmSrc.buffer = makeNoise(0.12);
+
+    const filmFilter = ctx.createBiquadFilter();
+    filmFilter.type = 'bandpass';
+    filmFilter.frequency.setValueAtTime(1800, now + 0.03);
+    filmFilter.Q.setValueAtTime(0.8, now + 0.03);
+
+    const filmGain = ctx.createGain();
+    filmGain.gain.setValueAtTime(0, now + 0.03);
+    filmGain.gain.linearRampToValueAtTime(0.032, now + 0.045);
+    filmGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
+
+    filmSrc.connect(filmFilter);
+    filmFilter.connect(filmGain);
+    filmGain.connect(ctx.destination);
+    filmSrc.start(now + 0.03);
+    filmSrc.stop(now + 0.15);
+
+    filmSrc.onended = () => {
+      [clickGain, clickFilter, thudGain, filmGain, filmFilter].forEach((n) =>
+        n.disconnect()
+      );
+    };
+
+    setTimeout(() => ctx.close(), 600);
   } catch {
-    // Silently fail if Web Audio API not supported
+    // silently fail
   }
 };
 
@@ -74,7 +126,7 @@ const Navigation = () => {
   }, [pathname]);
 
   const handleNavClick = useCallback(() => {
-    playChime();
+    playShutter();
   }, []);
 
   return (
