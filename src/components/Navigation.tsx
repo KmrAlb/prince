@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { X, Menu } from 'lucide-react';
@@ -18,6 +18,46 @@ export const NAVIGATION_ITEMS = [
   { name: 'Reviews', href: '/review' },
 ];
 
+// Generates a soft, airy chime using the Web Audio API — no audio file needed
+const playChime = () => {
+  try {
+    const AudioContext = window.AudioContext || (window as unknown as { webkitAudioContext: typeof window.AudioContext }).webkitAudioContext;
+    const ctx = new AudioContext();
+
+    // Two sine waves slightly detuned for a warm, breathy tone
+    const frequencies = [880, 1108]; // A5 + C#6 — a gentle major third
+
+    frequencies.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+      // Very soft — barely audible, just a whisper
+      gain.gain.setValueAtTime(0, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.06, ctx.currentTime + 0.01 + i * 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.6 + i * 0.1);
+
+      osc.start(ctx.currentTime + i * 0.04);
+      osc.stop(ctx.currentTime + 0.8);
+
+      osc.onended = () => {
+        gain.disconnect();
+        osc.disconnect();
+      };
+    });
+
+    // Close context after sound finishes to free memory
+    setTimeout(() => ctx.close(), 1000);
+  } catch {
+    // Silently fail if Web Audio API not supported
+  }
+};
+
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -33,12 +73,16 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
+  const handleNavClick = useCallback(() => {
+    playChime();
+  }, []);
+
   return (
     <>
       <motion.nav
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, ease: [0.65, 0.05, 0.36, 1] }}
         className="fixed top-0 left-0 right-0 z-50 transition-shadow duration-500"
         style={{
           background: 'rgba(0,0,0,0.96)',
@@ -53,12 +97,13 @@ const Navigation = () => {
             {/* Logo */}
             <Link
               href="/"
-              className="font-serif text-lg sm:text-xl tracking-wide text-white whitespace-nowrap"
+              onClick={handleNavClick}
+              className="font-serif text-xl tracking-wide text-white whitespace-nowrap flex-shrink-0 hover:opacity-75 transition-opacity duration-300"
             >
               Vivaah Tales
             </Link>
 
-            {/* Desktop */}
+            {/* Desktop links */}
             <div className="hidden md:flex items-center gap-6">
               {NAVIGATION_ITEMS.map((item) => {
                 const isActive = pathname === item.href;
@@ -66,21 +111,41 @@ const Navigation = () => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="relative text-xs tracking-widest uppercase font-light transition-opacity hover:opacity-60"
+                    onClick={handleNavClick}
+                    className="relative whitespace-nowrap text-xs tracking-widest uppercase font-light flex-shrink-0 transition-opacity duration-300 hover:opacity-60"
                     style={{ color: isActive ? '#c9a882' : '#ffffff' }}
                   >
                     {item.name}
+                    {isActive && (
+                      <motion.div
+                        layoutId="underline"
+                        className="absolute -bottom-1 left-0 right-0 h-px"
+                        style={{
+                          background:
+                            'linear-gradient(90deg, transparent, #c9a882, transparent)',
+                        }}
+                        transition={{ duration: 0.35, ease: 'easeOut' }}
+                      />
+                    )}
                   </Link>
                 );
               })}
             </div>
 
-            {/* Mobile Button */}
+            {/* Mobile button */}
             <button
-              onClick={() => setIsMobileMenuOpen((p) => !p)}
-              className="md:hidden text-white"
+              onClick={() => {
+                handleNavClick();
+                setIsMobileMenuOpen((p) => !p);
+              }}
+              className="md:hidden text-white hover:opacity-60 transition-opacity"
+              aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {isMobileMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
@@ -89,72 +154,94 @@ const Navigation = () => {
       {/* Spacer */}
       <div className="h-16" />
 
-      {/* Mobile Drawer */}
+      {/* Mobile drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
+              key="backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-40"
+              style={{
+                background: 'rgba(0,0,0,0.6)',
+                backdropFilter: 'blur(4px)',
+              }}
               onClick={() => setIsMobileMenuOpen(false)}
             />
 
-            {/* Drawer */}
             <motion.div
+              key="drawer"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ duration: 0.4 }}
-              className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#0a0a0a] z-50 border-l border-white/10 flex flex-col"
+              transition={{ duration: 0.4, ease: [0.65, 0.05, 0.36, 1] }}
+              className="fixed top-0 right-0 bottom-0 z-50 flex flex-col px-8 pt-6 pb-10"
+              style={{
+                width: 260,
+                background: '#0a0a0a',
+                borderLeft: '1px solid rgba(255,255,255,0.07)',
+              }}
             >
-              {/* Scrollable Content */}
-              <div className="flex-1 overflow-y-auto px-6 py-6">
-
-                {/* Close */}
-                <div className="flex justify-end mb-6">
-                  <button
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-white"
-                  >
-                    <X size={22} />
-                  </button>
-                </div>
-
-                {/* Brand */}
-                <p className="font-serif text-white text-lg mb-6">
-                  Vivaah Tales
-                </p>
-
-                <div className="h-px bg-gradient-to-r from-[#c9a882]/60 to-transparent mb-8" />
-
-                {/* Links */}
-                <nav className="flex flex-col gap-6">
-                  {NAVIGATION_ITEMS.map((item, i) => {
-                    const isActive = pathname === item.href;
-                    return (
-                      <motion.div
-                        key={item.name}
-                        initial={{ opacity: 0, x: 10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.05 }}
-                      >
-                        <Link
-                          href={item.href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="text-sm uppercase tracking-wider font-light break-words transition-opacity hover:opacity-60"
-                          style={{ color: isActive ? '#c9a882' : '#ffffff' }}
-                        >
-                          {item.name}
-                        </Link>
-                      </motion.div>
-                    );
-                  })}
-                </nav>
-
+              {/* Close */}
+              <div className="flex justify-end mb-8">
+                <button
+                  onClick={() => {
+                    handleNavClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-white hover:opacity-50 transition-opacity"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
+
+              {/* Brand */}
+              <p className="font-serif text-white text-lg tracking-wide mb-6">
+                Vivaah Tales
+              </p>
+
+              {/* Divider */}
+              <div
+                className="mb-8 h-px"
+                style={{
+                  background:
+                    'linear-gradient(90deg, rgba(201,168,130,0.6), transparent)',
+                }}
+              />
+
+              {/* Links */}
+              <nav className="flex flex-col gap-5">
+                {NAVIGATION_ITEMS.map((item, i) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: 14 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        duration: 0.35,
+                        delay: i * 0.04,
+                        ease: 'easeOut',
+                      }}
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={() => {
+                          handleNavClick();
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="text-xs uppercase tracking-widest font-light whitespace-nowrap transition-opacity hover:opacity-50"
+                        style={{ color: isActive ? '#c9a882' : '#ffffff' }}
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </nav>
             </motion.div>
           </>
         )}
